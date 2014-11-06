@@ -9,6 +9,7 @@
         public Status()
         {
             this.Teams = new HashSet<Team>();
+            this.Tasks = new HashSet<TeamTask>();
         }
 
         public int StatusId { get; set; }
@@ -19,5 +20,7 @@
         public string Name { get; set; }
 
         public virtual ICollection<Team> Teams { get; set; }
+
+        public virtual ICollection<TeamTask> Tasks { get; set; }
     }
 }

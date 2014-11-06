@@ -22,8 +22,6 @@
 
         public string Description { get; set; }
 
-        public virtual User TeamLeader { get; set; }
-
         public virtual ICollection<User> Members { get; set; }
 
         public virtual ICollection<TeamTask> Tasks { get; set; }

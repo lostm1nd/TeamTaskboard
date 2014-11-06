@@ -1,6 +1,7 @@
 ﻿namespace TeamTaskboard.Models
 {
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations.Schema;
     using System.Security.Claims;
     using System.Threading.Tasks;
 
@@ -11,7 +12,8 @@
     {
         public User()
         {
-            this.Tasks = new HashSet<TeamTask>();
+            this.ReportertedTasks = new HashSet<TeamTask>();
+            this.ProcessedTasks = new HashSet<TeamTask>();
         }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
@@ -24,6 +26,10 @@
 
         public virtual Team Team { get; set; }
 
-        public virtual ICollection<TeamTask> Tasks { get; set; }
+        [InverseProperty("Reporter")]
+        public virtual ICollection<TeamTask> ReportertedTasks { get; set; }
+
+        [InverseProperty("Processor")]
+        public virtual ICollection<TeamTask> ProcessedTasks { get; set; }
     }
 }

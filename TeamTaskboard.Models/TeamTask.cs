@@ -21,13 +21,13 @@
 
         public virtual Team Team { get; set; }
 
-        [Required]
         public virtual User Reporter { get; set; }
 
         public virtual User Processor { get; set; }
 
         [Required]
-        [MinLength(3), MaxLength(25)]
+        public int StatusId { get; set; }
+
         public Status Status { get; set; }
     }
 }
