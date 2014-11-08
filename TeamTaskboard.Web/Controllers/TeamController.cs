@@ -6,6 +6,8 @@
 
     using TeamTaskboard.Models;
     using TeamTaskboard.Web.Models;
+    using TeamTaskboard.Web.ViewModels;
+    using TeamTaskboard.Web.InputModels;
 
     [Authorize]
     public class TeamController : BaseController
@@ -23,10 +25,11 @@
         [HttpGet]
         public ActionResult JoinTeam()
         {
-            return PartialView("_JoinPartial", this.Data.Teams.GetAll());
+            return PartialView("_JoinTeamPartial", this.Data.Teams.GetAll());
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult JoinTeam(int? teamId)
         {
             if (teamId == null)
@@ -44,17 +47,34 @@
         [HttpGet]
         public ActionResult CreateTeam()
         {
-            return PartialView("_CreatePartial");
+            return PartialView("_CreateTeamPartial");
         }
 
         [HttpPost]
-        public ActionResult CreateTeam(Team team)
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateTeam(TeamInputModel model)
         {
-            this.Data.Teams.Add(team);
-            team.Members.Add(this.CurrentUser);
+            Team dbTeam = new Team
+            {
+                Name = model.Name,
+                Description = model.Description
+            };
+            this.Data.Teams.Add(dbTeam);
+            dbTeam.Members.Add(this.CurrentUser);
             this.Data.SaveChanges();
 
-            return Redirect("~/Team/Index");
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult LeaveTeam()
+        {
+            this.CurrentUser.TeamId = null;
+            this.CurrentUser.Team = null;
+            this.CurrentUser.ProcessedTasks = null;
+            this.CurrentUser.ReportertedTasks = null;
+            this.Data.SaveChanges();
+
+            return RedirectToAction("Index");
         }
     }
 }

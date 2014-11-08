@@ -163,16 +163,19 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\StatusesController.cs" />
     <Compile Include="Controllers\TeamController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="InputModels\StatusInputModel.cs" />
+    <Compile Include="InputModels\TeamInputModel.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="App_Start\ViewEnginesConfig.cs" />
-    <Compile Include="Models\TeamViewModel.cs" />
+    <Compile Include="ViewModels\TeamViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -240,10 +243,12 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_TeamMenuPartial.cshtml" />
     <Content Include="Views\Team\Index.cshtml" />
-    <Content Include="Views\Team\_JoinPartial.cshtml" />
+    <Content Include="Views\Team\_JoinTeamPartial.cshtml" />
     <Content Include="Views\Team\_CreatePartial.cshtml" />
     <Content Include="Views\Team\_NoTeamPartial.cshtml" />
     <Content Include="Views\Team\_TeamInfoPartial.cshtml" />
+    <Content Include="Views\Statuses\CreateStatus.cshtml" />
+    <Content Include="Views\Team\_CreateTeamPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

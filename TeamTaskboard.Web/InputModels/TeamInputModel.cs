@@ -1,19 +1,16 @@
-﻿namespace TeamTaskboard.Web.Models
+﻿namespace TeamTaskboard.Web.InputModels
 {
-    using System.Collections.Generic;
 
     using System.ComponentModel.DataAnnotations;
 
-    using TeamTaskboard.Models;
-
-    public class TeamViewModel
+    public class TeamInputModel
     {
         [Required]
         [MinLength(3), MaxLength(30)]
         public string Name { get; set; }
 
+        [DataType(DataType.MultilineText)]
+        [MaxLength(100)]
         public string Description { get; set; }
-
-        public virtual ICollection<string> Statuses { get; set; }
     }
 }
