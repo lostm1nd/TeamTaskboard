@@ -6,6 +6,12 @@
     {
         IRepository<User> Users { get; }
 
+        IRepository<Team> Teams { get; }
+
+        IRepository<TeamTask> TeamTasks { get; }
+
+        IRepository<Status> Statuses { get; }
+
         int SaveChanges();
     }
 }

@@ -28,6 +28,20 @@
             get { return this.GetRepository<User>(); }
         }
 
+        public IRepository<Team> Teams
+        {
+            get { return this.GetRepository<Team>(); }
+        }
+
+        public IRepository<TeamTask> TeamTasks
+        {
+            get { return this.GetRepository<TeamTask>(); }
+        }
+
+        public IRepository<Status> Statuses
+        {
+            get { return this.GetRepository<Status>(); }
+        }
 
         public int SaveChanges()
         {

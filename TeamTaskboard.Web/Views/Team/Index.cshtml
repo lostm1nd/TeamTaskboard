@@ -1,0 +1,17 @@
+﻿@model TeamTaskboard.Models.User
+@{
+    ViewBag.Title = "Team Profile";
+}
+
+@if (@Model.Team == null)
+{
+    @Html.Partial("_NoTeamPartial");
+}
+else
+{
+    @Html.Partial("_TeamInfoPartial")
+}
+
+@section scripts {
+    @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")
+}
