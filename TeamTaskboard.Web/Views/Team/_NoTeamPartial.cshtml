@@ -1,22 +1,24 @@
-﻿<section class="row">
-    <p>Currently you are not part of a team.</p>
-    <p>
-        @Ajax.ActionLink("Join a team", "JoinTeam", null,
+﻿<header class="row">
+    <div class="jumbotron">
+        <h1>Not part of a team?</h1>
+        <p>
+            @Ajax.ActionLink("Join a team", "JoinTeam", null,
                 new AjaxOptions
                 {
                     UpdateTargetId = "team-update",
                     HttpMethod = "GET",
                     InsertionMode = InsertionMode.Replace
                 }, new { @class = "btn btn-default" })
-        &nbsp; or &nbsp;
-        @Ajax.ActionLink("Create a team", "CreateTeam", null,
+            &nbsp; or &nbsp;
+            @Ajax.ActionLink("Create a team", "CreateTeam", null,
                 new AjaxOptions
                 {
                     UpdateTargetId = "team-update",
                     HttpMethod = "GET",
                     InsertionMode = InsertionMode.Replace
                 }, new { @class = "btn btn-default" })
-    </p>
-</section>
+        </p>
+    </div>
+</header>
 
 <section class="row" id="team-update"></section>
