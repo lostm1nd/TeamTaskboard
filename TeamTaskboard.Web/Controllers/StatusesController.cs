@@ -1,13 +1,14 @@
 ﻿namespace TeamTaskboard.Web.Controllers
 {
     using System.Web.Mvc;
+    using TeamTaskboard.Data.Contracts;
     using TeamTaskboard.Models;
     using TeamTaskboard.Web.InputModels;
 
     public class StatusesController : BaseController
     {
-        public StatusesController()
-            : base()
+        public StatusesController(ITaskboardData data)
+            : base(data)
         {
         }
 

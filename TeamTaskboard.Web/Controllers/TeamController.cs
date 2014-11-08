@@ -8,12 +8,13 @@
     using TeamTaskboard.Web.Models;
     using TeamTaskboard.Web.ViewModels;
     using TeamTaskboard.Web.InputModels;
+    using TeamTaskboard.Data.Contracts;
 
     [Authorize]
     public class TeamController : BaseController
     {
-        public TeamController()
-            : base()
+        public TeamController(ITaskboardData data)
+            : base(data)
         {
         }
 

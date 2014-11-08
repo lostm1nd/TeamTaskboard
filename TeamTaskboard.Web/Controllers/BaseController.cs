@@ -11,11 +11,6 @@
 
     public abstract class BaseController : Controller
     {
-        public BaseController()
-            : this(new TaskboardData(new TaskboardDbContext()))
-        {
-        }
-
         public BaseController(ITaskboardData data)
         {
             this.Data = data;
