@@ -1,16 +1,14 @@
 ﻿namespace TeamTaskboard.Web.Controllers
 {
-    using System.Linq;
     using System.Web.Mvc;
-
     using TeamTaskboard.Data.Contracts;
     using TeamTaskboard.Models;
     using TeamTaskboard.Web.InputModels;
 
     [Authorize]
-    public class StatusesController : BaseController
+    public class TasksController : BaseController
     {
-        public StatusesController(ITaskboardData data)
+        public TasksController(ITaskboardData data)
             : base(data)
         {
         }
@@ -21,25 +19,31 @@
         }
 
         [HttpGet]
-        public ActionResult CreateStatus()
+        public ActionResult CreateTask()
         {
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateStatus(StatusInputModel model)
+        public ActionResult CreateTask(TaskInputModel model)
         {
-            Status status = this.CurrentTeam.Statuses.FirstOrDefault(s => s.Name == model.Name);
-            if (status != null)
+            if (!ModelState.IsValid)
             {
-                ModelState.AddModelError(string.Empty, "Status is already defined for the team.");
                 return View(model);
             }
 
-            status = new Status { Name = model.Name };
-            this.Data.Statuses.Add(status);
-            status.Team = this.CurrentTeam;            
+            TeamTask task = new TeamTask
+            {
+                Name = model.Name,
+                Description = model.Description,
+                DueDate = model.DueDate
+            };
+
+            this.Data.TeamTasks.Add(task);
+            task.Reporter = this.CurrentUser;
+            task.Team = this.CurrentTeam;
+
             this.Data.SaveChanges();
 
             return RedirectToAction("Index", "Team");

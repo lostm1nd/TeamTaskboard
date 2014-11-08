@@ -15,10 +15,13 @@
         {
             this.Data = data;
             this.CurrentUser = data.Users.GetById(Thread.CurrentPrincipal.Identity.GetUserId());
+            this.CurrentTeam = this.CurrentUser.Team;
         }
 
         public ITaskboardData Data { get; private set; }
 
         public User CurrentUser { get; private set; }
+
+        public Team CurrentTeam { get; private set; }
     }
 }

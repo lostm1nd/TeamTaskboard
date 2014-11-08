@@ -25,8 +25,7 @@
 
         public virtual User Processor { get; set; }
 
-        [Required]
-        public int StatusId { get; set; }
+        public int? StatusId { get; set; }
 
         public Status Status { get; set; }
     }

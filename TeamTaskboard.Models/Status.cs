@@ -8,18 +8,18 @@
     {
         public Status()
         {
-            this.Teams = new HashSet<Team>();
             this.Tasks = new HashSet<TeamTask>();
         }
 
         public int StatusId { get; set; }
 
         [Required]
-        [Index(IsUnique=true)]
         [MinLength(3), MaxLength(25)]
         public string Name { get; set; }
 
-        public virtual ICollection<Team> Teams { get; set; }
+        public int TeamId { get; set; }
+
+        public virtual Team Team { get; set; }
 
         public virtual ICollection<TeamTask> Tasks { get; set; }
     }

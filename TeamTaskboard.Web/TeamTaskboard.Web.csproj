@@ -177,11 +177,13 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\StatusesController.cs" />
+    <Compile Include="Controllers\TasksController.cs" />
     <Compile Include="Controllers\TeamController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="InputModels\StatusInputModel.cs" />
+    <Compile Include="InputModels\TaskInputModel.cs" />
     <Compile Include="InputModels\TeamInputModel.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -261,6 +263,7 @@
     <Content Include="Views\Team\_TeamInfoPartial.cshtml" />
     <Content Include="Views\Statuses\CreateStatus.cshtml" />
     <Content Include="Views\Team\_CreateTeamPartial.cshtml" />
+    <Content Include="Views\Tasks\CreateTask.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
