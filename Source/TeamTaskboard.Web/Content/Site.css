@@ -1,6 +1,6 @@
 ﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+    padding-top: 65px;
+    padding-bottom: 35px;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -21,4 +21,18 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+.index-icons .glyphicon {
+    font-size: 3rem;
+}
+
+.sticky-footer {
+    color: #000;
+    background-color: #999;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 35px;
+    line-height: 35px;
 }

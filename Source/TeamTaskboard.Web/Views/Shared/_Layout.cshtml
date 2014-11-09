@@ -24,13 +24,14 @@
             </div>
         </div>
     </div>
+
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Team Taskboard</p>
-        </footer>
     </div>
+
+    <footer class="text-center sticky-footer">
+        <p>&copy; @DateTime.Now.Year - Team Taskboard</p>
+    </footer>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
