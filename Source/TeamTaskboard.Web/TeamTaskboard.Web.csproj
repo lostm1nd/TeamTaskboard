@@ -191,6 +191,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="App_Start\ViewEnginesConfig.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -271,6 +272,10 @@
     <ProjectReference Include="..\TeamTaskboard.Models\TeamTaskboard.Models.csproj">
       <Project>{990bc44f-f380-4ce9-bc8c-f9a6dfda372e}</Project>
       <Name>TeamTaskboard.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TeamTaskboard.Web.Infrastructure\TeamTaskboard.Web.Infrastructure.csproj">
+      <Project>{ea1237cf-8c00-42ba-aa34-1f2432f3cfdf}</Project>
+      <Name>TeamTaskboard.Web.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
