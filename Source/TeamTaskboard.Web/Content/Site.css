@@ -27,6 +27,10 @@ textarea {
     font-size: 3rem;
 }
 
+.index-icons .glyphicon::before {
+    color: #169;
+}
+
 .sticky-footer {
     color: #000;
     background-color: #999;
