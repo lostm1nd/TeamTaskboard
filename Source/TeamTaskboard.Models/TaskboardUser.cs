@@ -1,5 +1,7 @@
 ﻿namespace TeamTaskboard.Models
 {
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations.Schema;
     using System.Security.Claims;
     using System.Threading.Tasks;
 
@@ -9,11 +11,25 @@
 
     public class TaskboardUser : IdentityUser
     {
+        public TaskboardUser()
+        {
+            this.ReportertedTasks = new HashSet<TeamTask>();
+            this.ProcessedTasks = new HashSet<TeamTask>();
+        }
+
+        public int? TeamId { get; set; }
+
+        public virtual Team Team { get; set; }
+
+        [InverseProperty("Reporter")]
+        public virtual ICollection<TeamTask> ReportertedTasks { get; set; }
+
+        [InverseProperty("Processor")]
+        public virtual ICollection<TeamTask> ProcessedTasks { get; set; }
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<TaskboardUser> manager)
         {
-            // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
-            // Add custom user claims here
             return userIdentity;
         }
     }

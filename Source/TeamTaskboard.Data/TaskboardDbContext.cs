@@ -15,6 +15,12 @@
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<TaskboardDbContext, Configuration>());
         }
 
+        public IDbSet<Team> Teams { get; set; }
+
+        public IDbSet<Project> Projects { get; set; }
+
+        public IDbSet<TeamTask> Tasks { get; set; }
+
         public static TaskboardDbContext Create()
         {
             return new TaskboardDbContext();
