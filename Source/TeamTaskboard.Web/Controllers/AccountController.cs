@@ -152,7 +152,7 @@ namespace TeamTaskboard.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new TaskboardUser { UserName = model.Email, Email = model.Email };
+                var user = new TaskboardUser { UserName = model.Username, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

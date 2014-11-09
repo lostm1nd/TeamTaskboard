@@ -65,6 +65,11 @@ namespace TeamTaskboard.Web.Models
     public class RegisterViewModel
     {
         [Required]
+        [MinLength(3, ErrorMessage = "Username must be at least 3 characters long.")]
+        [MaxLength(20, ErrorMessage = "Username can not be more that 20 characters long.")]
+        public string Username { get; set; }
+
+        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
