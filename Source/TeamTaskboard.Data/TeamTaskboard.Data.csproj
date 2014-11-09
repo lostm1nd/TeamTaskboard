@@ -52,7 +52,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\IRepository.cs" />
+    <Compile Include="Contracts\ITaskboardData.cs" />
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Repository.cs" />
+    <Compile Include="TaskboardData.cs" />
     <Compile Include="TaskboardDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
