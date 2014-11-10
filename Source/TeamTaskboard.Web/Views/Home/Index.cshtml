@@ -1,5 +1,6 @@
 ﻿@{
     ViewBag.Title = "Home Page";
+    string tasksUrl = Url.Action("GetTasks", null, null, Request.Url.Scheme);
 }
 
 <header class="row">
@@ -10,3 +11,28 @@
 </header>
 
 @Html.Action("GetStatistics")
+
+@section scripts{
+    @Scripts.Render("~/bundles/chartjs")
+    <script type="text/javascript">
+        jQuery(function () {
+            jQuery.getJSON("@tasksUrl", function (data) {
+                var title = document.getElementById("tasksChartTitle"),
+                    canvas = document.getElementById("tasksChart"),
+                    context = canvas.getContext("2d");
+
+                var tasksChart = new Chart(context);
+                tasksChart.Pie(data, {
+                    animateScale: true
+                });
+
+                var total = 0;
+                data.forEach(function (task) {
+                    total += task.value;
+                });
+
+                title.innerText = "A total of " + total + " tasks were created.";
+            });
+        });
+    </script>
+}

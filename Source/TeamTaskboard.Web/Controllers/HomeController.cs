@@ -5,8 +5,12 @@
     using System.Web.Helpers;
     using System.Web.Mvc;
 
+    using Newtonsoft.Json;
+
     using TeamTaskboard.Data.Contracts;
     using TeamTaskboard.Models;
+    using TeamTaskboard.Web.Infrastructure.Json;
+    using TeamTaskboard.Web.ViewModels.Home;
 
     public class HomeController : BaseController
     {
@@ -27,45 +31,57 @@
             ViewBag.UsersCount = this.Data.Users.GetAll().Count();
             ViewBag.TeamsCount = this.Data.Teams.GetAll().Count();
             ViewBag.ProjectsCount = this.Data.Projects.GetAll().Count();
-            return PartialView("_GetStatisticsPartial");
+            return PartialView("_StatisticsPartial");
         }
 
-        public ActionResult GetTasksChart()
+        [OutputCache(Duration = 5 * 60)]
+        public ActionResult GetTasks()
         {
-            if (HttpContext.Cache["TasksStats"] == null)
+            var tasks = this.Data.Tasks.GetAll().ToList();
+            TaskJsonModel[] data = new TaskJsonModel[]
             {
-                var tasks = this.Data.Tasks.GetAll().ToList();
-                int[] stats = 
+                new TaskJsonModel
                 {
-                    10, //tasks.Where(t => t.Status == Status.NotStarted).Count(),
-                    12, //tasks.Where(t => t.Status == Status.InProgress).Count(),
-                    16, //tasks.Where(t => t.Status == Status.InReview).Count(),
-                    13, //tasks.Where(t => t.Status == Status.Blocked).Count(),
-                    14 //tasks.Where(t => t.Status == Status.Done).Count()
-                };
+                    Label = "Not started",
+                    Value = 10, //tasks.Where(t => t.Status == Status.NotStarted).Count(),
+                    Color = "#F7464A",
+                    Highlight = "#FF5A5E"
+                },
+                new TaskJsonModel
+                {
+                    Label = "In progress",
+                    Value = 12, //tasks.Where(t => t.Status == Status.InProgress).Count(),
+                    Color = "#46BFBD",
+                    Highlight = "#5AD3D1"
+                },
+                new TaskJsonModel
+                {
+                    Label = "In Review",
+                    Value = 16, //tasks.Where(t => t.Status == Status.InReview).Count(),
+                    Color = "#FDB45C",
+                    Highlight = "#FFC870"
+                },
+                new TaskJsonModel
+                {
+                    Label = "Blocked",
+                    Value = 13, //tasks.Where(t => t.Status == Status.Blocked).Count(),
+                    Color = "#B48EAD",
+                    Highlight = "#C69CBE"
+                },
+                new TaskJsonModel
+                {
+                    Label = "Blocked",
+                    Value = 14, //tasks.Where(t => t.Status == Status.Done).Count()
+                    Color = "#949FB1",
+                    Highlight = "#A8B3C5"
+                }
+            };
 
-                HttpContext.Cache.Insert(
-                    "TasksStats",
-                    stats,
-                    null,
-                    DateTime.Now.AddMinutes(5),
-                    TimeSpan.Zero);
-            }
+            var settings = new JsonSerializerSettings();
+            settings.ContractResolver = new LowercaseContractResolver();
+            var json = JsonConvert.SerializeObject(data, settings);
 
-            int totalTasksCount = 0;
-            foreach (var taskCount in (int[])HttpContext.Cache["TasksStats"])
-            {
-                totalTasksCount += taskCount;
-            }
-
-            var tasksChart = new Chart(width: 300, height: 300)
-                .AddTitle("Total tasks created: " + totalTasksCount)
-                .AddSeries(
-                    chartType: "Pie",
-                    xValue: new[] { "Not started", "In Progress", "In Review", "Blocked", "Done" },
-                    yValues: (int[])HttpContext.Cache["TasksStats"]);
-
-            return File(tasksChart.ToWebImage().GetBytes(), "image/jpeg");
+            return Content(json, "application/json");
         }
     }
 }

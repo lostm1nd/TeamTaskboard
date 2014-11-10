@@ -1,0 +1,32 @@
+﻿
+<section class="row index-icons">
+    <article class="col-md-4">
+        <div class="text-center well">
+            <span class="glyphicon glyphicon-user"></span>
+            <p>We have a total of @ViewBag.UsersCount registered users</p>
+        </div>
+    </article>
+    <article class="col-md-4">
+        <div class="text-center well">
+            <span class="glyphicon glyphicon-user"></span>
+            <span class="glyphicon glyphicon-user"></span>
+            <span class="glyphicon glyphicon-user"></span>
+            <p>which have formed @ViewBag.TeamsCount teams</p>
+        </div>
+    </article>
+    <article class="col-md-4">
+        <div class="text-center well">
+            <span class="glyphicon glyphicon-paperclip"></span>
+            <p>that work on @ViewBag.ProjectsCount different projects.</p>
+        </div>
+    </article>
+</section>
+
+<section class="row">
+    <article class="col-md-offset-4 col-md-4 text-center">
+        <p class="lead" id="tasksChartTitle"></p>
+        <canvas id="tasksChart" width="300" height="300">
+            Sorry but your browser does not support canvas.
+        </canvas>
+    </article>
+</section>
