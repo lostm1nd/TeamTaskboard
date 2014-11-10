@@ -1,7 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
-namespace TeamTaskboard.Web.ViewModels.Team
+﻿namespace TeamTaskboard.Web.ViewModels.Team
 {
-    public class TeamViewModel
+    using System.ComponentModel.DataAnnotations;
+
+    using TeamTaskboard.Models;
+    using TeamTaskboard.Web.Infrastructure.Mappings;
+
+    public class TeamViewModel : IMapFrom<Team>
     {
         public int TeamId { get; set; }
 

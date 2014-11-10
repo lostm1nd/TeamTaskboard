@@ -67,6 +67,7 @@
                 Name = model.Name,
                 Description = model.Description
             };
+
             this.Data.Teams.Add(dbTeam);
             dbTeam.Members.Add(this.CurrentUser);
             this.Data.SaveChanges();
