@@ -1,0 +1,30 @@
+﻿@model IEnumerable<TeamTaskboard.Models.Team>
+
+@using (Html.BeginForm("JoinTeam", "Team", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Join an existing team</h4>
+        <hr />
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="allTeams">Select a team</label>
+            <div class="col-md-10">
+                <select class="form-control" name="teamId" id="allTeams">
+                    <option value="null">Choose a team</option>
+                    @foreach (var team in Model)
+                    {
+                        <option value="@team.TeamId">@team.Name</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Join" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}

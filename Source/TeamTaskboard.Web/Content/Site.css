@@ -1,12 +1,17 @@
-﻿body {
-    padding-top: 65px;
-    padding-bottom: 35px;
+﻿html, body {
+    height: 100%;
+    margin-bottom: 35px;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+    min-height: 100%;
+}
+
+.body-content:after {
+    content: "";
+    display: block;
+    height: 35px;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -34,9 +39,10 @@ textarea {
 .sticky-footer {
     color: #000;
     background-color: #999;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
     height: 35px;
     line-height: 35px;
+}
+
+.no-margin {
+    margin: 0;
 }
