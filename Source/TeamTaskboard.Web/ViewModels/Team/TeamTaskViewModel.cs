@@ -1,17 +1,17 @@
 ﻿namespace TeamTaskboard.Web.ViewModels.Team
 {
-    using System.ComponentModel.DataAnnotations;
-
+    using System;
     using TeamTaskboard.Models;
     using TeamTaskboard.Web.Infrastructure.Mappings;
 
-    public class TeamViewModel : IMapFrom<Team>
+    public class TeamTaskViewModel : IMapFrom<TeamTask>
     {
-        public int TeamId { get; set; }
-
         public string Name { get; set; }
-        
-        [DisplayFormat(NullDisplayText = "No description provided.")]
+
         public string Description { get; set; }
+
+        public DateTime DueDate { get; set; }
+
+        public string Status { get; set; }
     }
 }
