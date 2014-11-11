@@ -1,0 +1,40 @@
+﻿@using TeamTaskboard.Web.ViewModels.Team
+
+@helper ProjectsPanel(IEnumerable<TeamProjectViewModel> projects)
+{
+    <div class="panel-body">
+        @if (projects.Count() > 0)
+        {
+            foreach (var project in projects)
+            {
+                <p> @project.Name</p>
+            }
+        }
+        else
+        {
+            <p>Currently there are no projects.</p>
+        }
+    </div>
+}
+
+@helper TasksPanel(IEnumerable<TeamProjectViewModel> projects)
+{
+    <div class="panel-body">
+        @{
+            int total = 0;
+            foreach (var project in projects)
+            {
+                foreach (var task in project.Tasks)
+                {
+                    total += 1;
+                    <p>Name: @task.Name | Due Date: @task.DueDate</p>
+                }
+            }
+
+            if (total == 0)
+            {
+                <p>Currently there are no tasks.</p>
+            }
+}
+    </div>
+}

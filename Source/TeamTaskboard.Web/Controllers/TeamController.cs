@@ -3,9 +3,12 @@
     using System.Linq;
     using System.Web.Mvc;
 
+    using AutoMapper;
+
     using TeamTaskboard.Data.Contracts;
     using TeamTaskboard.Models;
     using TeamTaskboard.Web.InputModels.Team;
+    using TeamTaskboard.Web.ViewModels.Team;
 
     [Authorize]
     public class TeamController : BaseController
@@ -18,16 +21,16 @@
         [HttpGet]
         public ActionResult Index()
         {
-            if (this.CurrentUser.Team == null)
+            var team = this.CurrentUser.Team;
+            if (team == null)
             {
-                ViewBag.HasTeam = false;
+                return View("NoTeam");
             }
             else
             {
-                ViewBag.HasTeam = true;
+                var teamModel = Mapper.Map<ExtendedTeamViewModel>(team);
+                return View("TeamInfo", teamModel);
             }
-
-            return View();
         }
 
         [HttpGet]

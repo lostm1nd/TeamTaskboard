@@ -43,6 +43,14 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="AutoMapper, Version=3.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\AutoMapper.3.2.1\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper.Net4, Version=3.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\AutoMapper.3.2.1\lib\net40\AutoMapper.Net4.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Owin, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -196,6 +204,10 @@
     <Compile Include="Startup.cs" />
     <Compile Include="App_Start\ViewEnginesConfig.cs" />
     <Compile Include="ViewModels\Home\TaskJsonModel.cs" />
+    <Compile Include="ViewModels\Team\ExtendedTeamViewModel.cs" />
+    <Compile Include="ViewModels\Team\TeamMemberViewModel.cs" />
+    <Compile Include="ViewModels\Team\TeamProjectViewModel.cs" />
+    <Compile Include="ViewModels\Team\TeamTaskViewModel.cs" />
     <Compile Include="ViewModels\Team\TeamViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -214,6 +226,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
+    <Content Include="App_Code\TeamInfoHelpers.cshtml" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -266,11 +279,10 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\_StatisticsPartial.cshtml" />
     <Content Include="Views\Shared\_AuthorizedMenu.cshtml" />
-    <Content Include="Views\Team\Index.cshtml" />
-    <Content Include="Views\Team\_NoTeamPartial.cshtml" />
-    <Content Include="Views\Team\_TeamInfoPartial.cshtml" />
     <Content Include="Views\Team\_CreateTeamPartial.cshtml" />
     <Content Include="Views\Team\_JoinTeamPartial.cshtml" />
+    <Content Include="Views\Team\NoTeam.cshtml" />
+    <Content Include="Views\Team\TeamInfo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -321,6 +333,7 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <Import Project="..\packages\AutoMapper.3.2.1\tools\AutoMapper.targets" Condition="Exists('..\packages\AutoMapper.3.2.1\tools\AutoMapper.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

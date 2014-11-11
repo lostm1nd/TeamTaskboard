@@ -1,0 +1,69 @@
+﻿@model TeamTaskboard.Web.ViewModels.Team.ExtendedTeamViewModel
+
+@{
+    ViewBag.Title = "Team Info";
+}
+
+<header class="row">
+    <div class="jumbotron">
+        <h1>Team @Model.Name</h1>
+        <p class="lead">@Model.Description</p>
+        <p>
+            @Html.ActionLink("Leave", "LeaveTeam", "Team", null, new { @class = "btn btn-default" })
+        </p>
+    </div>
+</header>
+
+<section class="row">
+    <article class="col-md-12">
+        <div class="panel panel-default">
+            <h2 class="panel-heading text-center">Members</h2>
+            <div class="panel-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Reported Tasks</th>
+                            <th>Processed Tasks</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var member in Model.Members)
+                        {
+
+                            <tr>
+                                <td>@member.UserName</td>
+                                <td>@member.Email</td>
+                                <td>@member.ReportedTasksCount</td>
+                                <td>@member.ProcessedTasksCount</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <footer class="panel-footer"></footer>
+        </div>
+    </article>
+</section>
+
+<section class="row">
+    <article class="col-md-6">
+        <div class="panel panel-default">
+            <h2 class="panel-heading text-center">Projects</h2>
+            @TeamInfoHelpers.ProjectsPanel(Model.Projects)
+            <footer class="panel-footer">
+                @Html.ActionLink("Create new task", "CreateTask", "Tasks", null, new { @class = "btn btn-default" })
+            </footer>
+        </div>
+    </article>
+    <article class="col-md-6">
+        <div class="panel panel-default">
+            <h2 class="panel-heading text-center">Tasks</h2>
+            @TeamInfoHelpers.TasksPanel(Model.Projects)
+            <footer class="panel-footer">
+                @Html.ActionLink("Create new task", "CreateTask", "Tasks", null, new { @class = "btn btn-default" })
+            </footer>
+        </div>
+    </article>
+</section>
