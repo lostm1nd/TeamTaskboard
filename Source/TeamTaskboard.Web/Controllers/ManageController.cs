@@ -5,8 +5,8 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using TeamTaskboard.Web.Models;
 using TeamTaskboard.Models;
+using TeamTaskboard.Web.ViewModels.Manage;
 
 namespace TeamTaskboard.Web.Controllers
 {
