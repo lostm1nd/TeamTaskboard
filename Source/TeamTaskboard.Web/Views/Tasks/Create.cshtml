@@ -4,6 +4,10 @@
     ViewBag.Title = "Create Task";
 }
 
+@section styles {
+    @Styles.Render("~/Content/datepickercss")
+}
+
 <h2>@ViewBag.Title</h2>
 <hr />
 
@@ -65,3 +69,12 @@
 <div>
     @Html.ActionLink("Back to team info", "Index", "Team")
 </div>
+
+@section scripts {
+    @Scripts.Render("~/bundles/datepickerjs")
+    <script type="text/javascript">
+        $(function () {
+            $('.datepicker').datepicker();
+        });
+    </script>
+}

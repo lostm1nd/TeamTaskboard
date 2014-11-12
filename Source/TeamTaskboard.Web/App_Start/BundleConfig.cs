@@ -5,8 +5,31 @@ namespace TeamTaskboard.Web
 {
     public class BundleConfig
     {
-        // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
+        {
+            RegisterStyles(bundles);
+
+            RegisterScipts(bundles);
+            
+
+            
+
+            BundleTable.EnableOptimizations = true;
+        }
+
+        private static void RegisterStyles(BundleCollection bundles)
+        {
+            bundles.Add(new StyleBundle("~/Content/bootstrapcss").Include(
+                      "~/Content/bootstrap.paper.css"));
+
+            bundles.Add(new StyleBundle("~/Content/datepickercss").Include(
+                      "~/Content/bootstrap-datepicker3.css"));
+
+            bundles.Add(new StyleBundle("~/Content/mycss").Include(
+                      "~/Content/site.css"));
+        }
+
+        private static void RegisterScipts(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
@@ -23,13 +46,8 @@ namespace TeamTaskboard.Web
             bundles.Add(new ScriptBundle("~/bundles/chartjs").Include(
                       "~/Scripts/Chart.min.js"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.paper.css",
-                      "~/Content/site.css"));
-
-            // Set EnableOptimizations to false for debugging. For more information,
-            // visit http://go.microsoft.com/fwlink/?LinkId=301862
-            BundleTable.EnableOptimizations = true;
+            bundles.Add(new ScriptBundle("~/bundles/datepickerjs").Include(
+                      "~/Scripts/bootstrap-datepicker.js"));
         }
     }
 }
