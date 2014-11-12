@@ -53,7 +53,7 @@
             <h2 class="panel-heading text-center">Projects</h2>
             @TeamInfoHelpers.ProjectsPanel(Model.Projects)
             <footer class="panel-footer">
-                @Html.ActionLink("Create new task", "CreateTask", "Tasks", null, new { @class = "btn btn-default" })
+                @Html.ActionLink("Create new project", "Create", "Projects", null, new { @class = "btn btn-default" })
             </footer>
         </div>
     </article>
@@ -62,7 +62,7 @@
             <h2 class="panel-heading text-center">Tasks</h2>
             @TeamInfoHelpers.TasksPanel(Model.Projects)
             <footer class="panel-footer">
-                @Html.ActionLink("Create new task", "CreateTask", "Tasks", null, new { @class = "btn btn-default" })
+                @Html.ActionLink("Create new task", "Create", "Tasks", null, new { @class = "btn btn-default" })
             </footer>
         </div>
     </article>

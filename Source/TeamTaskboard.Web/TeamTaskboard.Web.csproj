@@ -193,6 +193,8 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ProjectsController.cs" />
+    <Compile Include="Controllers\TasksController.cs" />
     <Compile Include="Controllers\TeamController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -219,6 +221,9 @@
     <Compile Include="ViewModels\Manage\IndexViewModel.cs" />
     <Compile Include="ViewModels\Manage\SetPasswordViewModel.cs" />
     <Compile Include="ViewModels\Manage\VerifyPhoneNumberViewModel.cs" />
+    <Compile Include="ViewModels\Project\CreateProjectViewModel.cs" />
+    <Compile Include="ViewModels\Task\CreateTaskViewModel.cs" />
+    <Compile Include="ViewModels\Task\StatusViewModel.cs" />
     <Compile Include="ViewModels\Team\ExtendedTeamViewModel.cs" />
     <Compile Include="ViewModels\Team\TeamMemberViewModel.cs" />
     <Compile Include="ViewModels\Team\TeamProjectViewModel.cs" />
@@ -298,6 +303,8 @@
     <Content Include="Views\Team\_JoinTeamPartial.cshtml" />
     <Content Include="Views\Team\NoTeam.cshtml" />
     <Content Include="Views\Team\TeamInfo.cshtml" />
+    <Content Include="Views\Projects\Create.cshtml" />
+    <Content Include="Views\Tasks\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
