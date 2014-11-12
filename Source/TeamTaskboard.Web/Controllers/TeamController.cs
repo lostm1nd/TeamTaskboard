@@ -4,6 +4,7 @@
     using System.Web.Mvc;
 
     using AutoMapper;
+    using AutoMapper.QueryableExtensions;
 
     using TeamTaskboard.Data.Contracts;
     using TeamTaskboard.Models;
@@ -36,7 +37,7 @@
         [HttpGet]
         public ActionResult JoinTeam()
         {
-            return PartialView("_JoinTeamPartial", this.Data.Teams.GetAll());
+            return PartialView("_JoinTeamPartial", this.Data.Teams.GetAll().Project().To<TeamViewModel>());
         }
 
         [HttpPost]

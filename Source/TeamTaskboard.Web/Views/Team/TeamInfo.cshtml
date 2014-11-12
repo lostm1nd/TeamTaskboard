@@ -6,8 +6,8 @@
 
 <header class="row">
     <div class="jumbotron">
-        <h1>Team @Model.Name</h1>
-        <p class="lead">@Model.Description</p>
+        <h1>Team @Html.DisplayFor(m => m.Name)</h1>
+        <p class="lead">@Html.DisplayFor(m => m.Description)</p>
         <p>
             @Html.ActionLink("Leave", "LeaveTeam", "Team", null, new { @class = "btn btn-default" })
         </p>
