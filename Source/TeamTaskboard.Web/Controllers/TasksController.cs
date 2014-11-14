@@ -1,10 +1,11 @@
 ﻿namespace TeamTaskboard.Web.Controllers
 {
+    using AutoMapper;
     using System;
     using System.Linq;
     using System.Web.Mvc;
-
     using TeamTaskboard.Data.Contracts;
+    using TeamTaskboard.Models;
     using TeamTaskboard.Web.ViewModels.Task;
 
     [Authorize]
@@ -34,7 +35,17 @@
         [ValidateAntiForgeryToken]
         public ActionResult Create(CreateTaskViewModel model)
         {
-            return View();
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            TeamTask task = Mapper.Map<TeamTask>(model);
+            task.Reporter = this.CurrentUser;
+            this.Data.Tasks.Add(task);
+            this.Data.SaveChanges();
+
+            return RedirectToAction("Index", "Team");
         }
     }
 }
