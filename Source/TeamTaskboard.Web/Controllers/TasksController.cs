@@ -65,11 +65,31 @@
         }
 
         [HttpGet]
+        public ActionResult Assign(int id)
+        {
+            var task = this.Data.Tasks.GetById(id);
+            task.Processor = this.CurrentUser;
+            this.Data.SaveChanges();
+
+            return RedirectToAction("Details", new { id = id });
+        }
+
+        [HttpGet]
         public ActionResult ChangeStatus(int id)
         {
             var taskModel = Mapper.Map<ExtendedTaskViewModel>(this.Data.Tasks.GetById(id));
 
             return PartialView("_ChangeStatusPartial", taskModel);
+        }
+
+        [HttpPost]
+        public ActionResult ChangeStatus(int id, int status)
+        {
+            var task =this.Data.Tasks.GetById(id);
+            task.Status = (Status)status;
+            this.Data.SaveChanges();
+
+            return RedirectToAction("Details", new { id = id });
         }
     }
 }

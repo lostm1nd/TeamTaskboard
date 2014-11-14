@@ -10,13 +10,6 @@
 <div class="row" id="taks-info">
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.TaskId)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.TaskId)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.Name)
         </dt>
         <dd>
@@ -44,18 +37,37 @@
             @Html.DisplayFor(model => model.DueDate)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.Reporter)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Reporter)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Processor)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Processor)
+        </dd>
     </dl>
 
    <p>
-       @Html.ActionLink("Assign to me", "Assign", "Tasks", null, new { @class="btn btn-default" })
-
-       @Ajax.ActionLink("Change status", "ChangeStatus", "Tasks", new { id = Model.TaskId },
+       @if (Model.Processor == null)
+       {
+           @Html.ActionLink("Assign to me", "Assign", "Tasks", new { id = Model.TaskId }, new { @class = "btn btn-default" })
+       }
+       
+       @if (Model.Processor == User.Identity.Name)
+       {
+           @Ajax.ActionLink("Change status", "ChangeStatus", "Tasks", new { id = Model.TaskId },
                 new AjaxOptions
                 {
                     UpdateTargetId = "taks-info",
                     HttpMethod = "GET",
                     InsertionMode = InsertionMode.Replace
                 }, new { @class = "btn btn-default" })
+       }
 
        @Html.ActionLink("Add comment", "Create", "Comments", null, new { @class = "btn btn-default" })
    </p>
@@ -64,6 +76,9 @@
 <div class="row">
     @TaskHelpers.ShowComments(Model)
 </div>
+
+<div class="row" id="task-comment"></div>
+
 <p>
     @Html.ActionLink("Back to team info", "Index", "Team")
 </p>

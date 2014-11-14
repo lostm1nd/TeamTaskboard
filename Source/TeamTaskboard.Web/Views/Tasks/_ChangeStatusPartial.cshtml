@@ -33,10 +33,23 @@
             @Html.DisplayFor(model => model.DueDate)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.Reporter)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Reporter)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Processor)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Processor)
+        </dd>
     </dl>
 
     <p>
         <input type="submit" value="Save" class="btn btn-default" />
-        <button class="btn btn-default">Cancel</button>
+        @Html.ActionLink("Cancel","Details", "Tasks", new { id = Model.TaskId }, new { @class="btn btn-default" })
     </p>
 }

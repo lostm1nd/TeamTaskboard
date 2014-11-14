@@ -24,6 +24,11 @@
         [DataType(DataType.Date)]
         public DateTime DueDate { get; set; }
 
+        public string Reporter { get; set; }
+
+        [DisplayFormat(NullDisplayText = "There is no processor for this task.")]
+        public string Processor { get; set; }
+
         public StatusViewModel Status { get; set; }
 
         public ICollection<CommentViewModel> Comments { get; set; }
@@ -31,7 +36,9 @@
         public override void CreateMappings(IConfiguration configuration)
         {
             configuration.CreateMap<TeamTask, ExtendedTaskViewModel>()
-                .ForMember(dest => dest.TaskId, opt => opt.MapFrom(src => src.TeamTaskId));
+                .ForMember(dest => dest.TaskId, opt => opt.MapFrom(src => src.TeamTaskId))
+                .ForMember(dest => dest.Reporter, opt => opt.MapFrom(src => src.Reporter.UserName))
+                .ForMember(dest => dest.Processor, opt => opt.MapFrom(src => src.Processor.UserName));
         }
     }
 }
