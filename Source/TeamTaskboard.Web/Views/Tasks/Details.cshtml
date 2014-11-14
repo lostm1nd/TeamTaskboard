@@ -69,7 +69,13 @@
                 }, new { @class = "btn btn-default" })
        }
 
-       @Html.ActionLink("Add comment", "Create", "Comments", null, new { @class = "btn btn-default" })
+       @Ajax.ActionLink("Add comment", "Create", "Comments", new { taskId = Model.TaskId },
+                new AjaxOptions
+                {
+                    UpdateTargetId = "taks-comment",
+                    HttpMethod = "GET",
+                    InsertionMode = InsertionMode.Replace
+                }, new { @class = "btn btn-default" })
    </p>
 </div>
 
@@ -77,7 +83,7 @@
     @TaskHelpers.ShowComments(Model)
 </div>
 
-<div class="row" id="task-comment"></div>
+<div class="row" id="taks-comment"></div>
 
 <p>
     @Html.ActionLink("Back to team info", "Index", "Team")
