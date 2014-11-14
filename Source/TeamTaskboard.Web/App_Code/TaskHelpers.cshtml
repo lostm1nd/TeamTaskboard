@@ -1,0 +1,12 @@
+﻿@using TeamTaskboard.Web.ViewModels.Task
+
+@helper ShowComments(ExtendedTaskViewModel task)
+{ 
+    foreach (var comment in task.Comments)
+    {
+        <article class="panel panel-info">
+            <p class="panel-body">@comment.Content</p>
+            <footer class="panel-footer">@comment.PostedOn by @comment.PostedBy</footer>
+        </article>
+    }
+}

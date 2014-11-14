@@ -27,12 +27,13 @@
         [HttpGet]
         public ActionResult Details(int? id)
         {
-            if (id == null)
+            var task = this.Data.Tasks.GetById(id);
+            if (task == null)
             {
                 return View("NotFound");
             }
 
-            var taskModel = Mapper.Map<TaskViewModel>(this.Data.Tasks.GetById(id));
+            var taskModel = Mapper.Map<ExtendedTaskViewModel>(this.Data.Tasks.GetById(id));
 
             return View(taskModel);
         }

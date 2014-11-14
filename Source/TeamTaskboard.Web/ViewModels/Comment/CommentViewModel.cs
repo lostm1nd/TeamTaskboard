@@ -1,20 +1,17 @@
-﻿namespace TeamTaskboard.Models
+﻿namespace TeamTaskboard.Web.ViewModels.Comment
 {
     using System;
-    using System.ComponentModel.DataAnnotations;
+    using TeamTaskboard.Models;
+    using TeamTaskboard.Web.Infrastructure.Mappings;
 
-    public class Comment
+    public class CommentViewModel : IMapFrom<Comment>
     {
-        [Key]
         public int CommentId { get; set; }
 
-        [MinLength(5)]
         public string Content { get; set; }
 
-        [Required]
         public string PostedBy { get; set; }
 
-        [Required]
         public DateTime PostedOn { get; set; }
     }
 }
