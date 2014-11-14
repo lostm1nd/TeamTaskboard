@@ -7,7 +7,7 @@
         [Display(Name = "Not started")]
         NotStarted,
 
-        [Display(Name = "In progreess")]
+        [Display(Name = "In progress")]
         InProgress,
 
         [Display(Name = "In review")]
