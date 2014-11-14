@@ -23,6 +23,12 @@
         }
 
         [HttpGet]
+        public ActionResult Details(int? id)
+        {
+            return View(new CreateProjectViewModel());
+        }
+
+        [HttpGet]
         public ActionResult Create()
         {
             return View(new CreateProjectViewModel());

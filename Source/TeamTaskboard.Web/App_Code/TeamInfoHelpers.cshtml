@@ -1,13 +1,15 @@
-﻿@using TeamTaskboard.Web.ViewModels.Team
+﻿@using TeamTaskboard.Web.ViewModels.Project
 
-@helper ProjectsPanel(IEnumerable<TeamProjectViewModel> projects)
+@helper ProjectsPanel(IEnumerable<ProjectViewModel> projects)
 {
     <div class="panel-body">
         @if (projects.Count() > 0)
         {
             foreach (var project in projects)
             {
-                <p>@project.Name</p>
+                <p>
+                    <a href="/Projects/Details/@project.ProjectId">@project.Name</a>
+                </p>
             }
         }
         else
@@ -17,7 +19,7 @@
     </div>
 }
 
-@helper TasksPanel(IEnumerable<TeamProjectViewModel> projects)
+@helper TasksPanel(IEnumerable<ProjectViewModel> projects)
 {
     <div class="panel-body">
         @{
@@ -27,7 +29,9 @@
                 foreach (var task in project.Tasks)
                 {
                     total += 1;
-                    <p>Name: @task.Name | Due Date: @task.DueDate</p>
+                    <p>
+                        <a href="/Tasks/Details/@task.TaskId">@task.Name</a>
+                    </p>
                 }
             }
 

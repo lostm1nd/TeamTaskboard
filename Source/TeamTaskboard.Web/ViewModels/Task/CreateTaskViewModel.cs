@@ -5,6 +5,7 @@
 
     using TeamTaskboard.Models;
     using TeamTaskboard.Web.Infrastructure.Mappings;
+    using TeamTaskboard.Web.ViewModels.Status;
 
     public class CreateTaskViewModel : IMapFrom<TeamTask>
     {

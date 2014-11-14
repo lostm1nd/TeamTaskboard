@@ -223,11 +223,11 @@
     <Compile Include="ViewModels\Manage\VerifyPhoneNumberViewModel.cs" />
     <Compile Include="ViewModels\Project\CreateProjectViewModel.cs" />
     <Compile Include="ViewModels\Task\CreateTaskViewModel.cs" />
-    <Compile Include="ViewModels\Task\StatusViewModel.cs" />
+    <Compile Include="ViewModels\Status\StatusViewModel.cs" />
     <Compile Include="ViewModels\Team\ExtendedTeamViewModel.cs" />
     <Compile Include="ViewModels\Team\TeamMemberViewModel.cs" />
-    <Compile Include="ViewModels\Team\TeamProjectViewModel.cs" />
-    <Compile Include="ViewModels\Team\TeamTaskViewModel.cs" />
+    <Compile Include="ViewModels\Project\ProjectViewModel.cs" />
+    <Compile Include="ViewModels\Task\TaskViewModel.cs" />
     <Compile Include="ViewModels\Team\TeamViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -308,6 +308,8 @@
     <Content Include="Views\Team\TeamInfo.cshtml" />
     <Content Include="Views\Projects\Create.cshtml" />
     <Content Include="Views\Tasks\Create.cshtml" />
+    <Content Include="Views\Tasks\Details.cshtml" />
+    <Content Include="Views\Shared\NotFound.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
