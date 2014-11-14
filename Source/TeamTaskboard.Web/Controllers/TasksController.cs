@@ -63,5 +63,13 @@
 
             return RedirectToAction("Index", "Team");
         }
+
+        [HttpGet]
+        public ActionResult ChangeStatus(int id)
+        {
+            var taskModel = Mapper.Map<ExtendedTaskViewModel>(this.Data.Tasks.GetById(id));
+
+            return PartialView("_ChangeStatusPartial", taskModel);
+        }
     }
 }

@@ -11,7 +11,7 @@
     using TeamTaskboard.Web.ViewModels.Comment;
     using TeamTaskboard.Web.ViewModels.Status;
 
-    public class ExtendedTaskViewModel : TaskViewModel, ICustomMappings
+    public class ExtendedTaskViewModel : TaskViewModel
     {
         public ExtendedTaskViewModel()
         {
@@ -28,9 +28,9 @@
 
         public ICollection<CommentViewModel> Comments { get; set; }
 
-        public void CreateMappings(IConfiguration configuration)
+        public override void CreateMappings(IConfiguration configuration)
         {
-            configuration.CreateMap<TeamTask, TaskViewModel>()
+            configuration.CreateMap<TeamTask, ExtendedTaskViewModel>()
                 .ForMember(dest => dest.TaskId, opt => opt.MapFrom(src => src.TeamTaskId));
         }
     }

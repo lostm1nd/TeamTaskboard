@@ -7,8 +7,15 @@
 <h2>@ViewBag.Title</h2>
 <hr />
 
-<div class="row">
+<div class="row" id="taks-info">
     <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TaskId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TaskId)
+        </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.Name)
         </dt>
@@ -38,11 +45,29 @@
         </dd>
 
     </dl>
+
+   <p>
+       @Html.ActionLink("Assign to me", "Assign", "Tasks", null, new { @class="btn btn-default" })
+
+       @Ajax.ActionLink("Change status", "ChangeStatus", "Tasks", new { id = Model.TaskId },
+                new AjaxOptions
+                {
+                    UpdateTargetId = "taks-info",
+                    HttpMethod = "GET",
+                    InsertionMode = InsertionMode.Replace
+                }, new { @class = "btn btn-default" })
+
+       @Html.ActionLink("Add comment", "Create", "Comments", null, new { @class = "btn btn-default" })
+   </p>
 </div>
 
-@TaskHelpers.ShowComments(Model)
-
+<div class="row">
+    @TaskHelpers.ShowComments(Model)
+</div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to team info", "Index", "Team")
 </p>
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryajax")
+}
