@@ -7,12 +7,11 @@ namespace TeamTaskboard.Web
     {
         public static void RegisterBundles(BundleCollection bundles)
         {
+            bundles.IgnoreList.Clear();
+
             RegisterStyles(bundles);
 
             RegisterScipts(bundles);
-            
-
-            
 
             BundleTable.EnableOptimizations = true;
         }
@@ -27,6 +26,10 @@ namespace TeamTaskboard.Web
 
             bundles.Add(new StyleBundle("~/Content/mycss").Include(
                       "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/Content/kendoui").Include(
+                      "~/Content/kendoui/kendo.common-bootstrap.min.css",
+                      "~/Content/kendoui/kendo.flat.min.css"));
         }
 
         private static void RegisterScipts(BundleCollection bundles)
@@ -48,6 +51,10 @@ namespace TeamTaskboard.Web
 
             bundles.Add(new ScriptBundle("~/bundles/datepickerjs").Include(
                       "~/Scripts/bootstrap-datepicker.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/kendoui").Include(
+                      "~/Scripts/kendoui/kendo.all.min.js",
+                      "~/Scripts/kendoui/kendo.aspnetmvc.min.js"));
         }
     }
 }
