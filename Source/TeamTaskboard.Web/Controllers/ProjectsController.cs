@@ -38,15 +38,15 @@
         }
 
         [HttpGet]
-        public ActionResult Details(int? id)
+        public ActionResult Details(int id)
         {
-            var project = this.Data.Projects.GetById(id);
+            var project = this.Data.Projects.GetAll().Where(p => p.ProjectId == id);
             if (project == null)
             {
                 return View("NotFound");
             }
 
-            var projectModel = Mapper.Map<ProjectViewModel>(project);
+            var projectModel = project.Project().To<ProjectViewModel>().FirstOrDefault();
 
             return View(projectModel);
         }

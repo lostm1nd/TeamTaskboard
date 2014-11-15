@@ -716,6 +716,7 @@
     <Content Include="Scripts\kendoui\kendo.aspnetmvc.min.js.map" />
     <Content Include="Views\Projects\Index.cshtml" />
     <Content Include="Views\Tasks\Index.cshtml" />
+    <Content Include="Views\Projects\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

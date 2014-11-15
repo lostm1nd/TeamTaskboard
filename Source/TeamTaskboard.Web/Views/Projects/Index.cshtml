@@ -29,7 +29,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.Description)
         </td>
-        <td>@item.Tasks.Count</td>
+        <td>@item.Tasks.Count()</td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id = item.ProjectId }) |
             @Html.ActionLink("Details", "Details", new { id = item.ProjectId }) |
