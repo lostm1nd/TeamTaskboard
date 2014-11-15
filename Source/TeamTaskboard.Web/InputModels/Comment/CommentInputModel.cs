@@ -17,10 +17,6 @@
         [UIHint("TinyMCE")]
         public string Content { get; set; }
 
-        public string PostedBy { get; set; }
-
-        public DateTime PostedOn { get; set; }
-
         public int TaskId { get; set; }
     }
 }

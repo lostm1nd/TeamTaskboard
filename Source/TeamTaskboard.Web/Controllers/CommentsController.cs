@@ -11,13 +11,17 @@
     using TeamTaskboard.Models;
     using TeamTaskboard.Web.InputModels.Comment;
     using TeamTaskboard.Web.ViewModels.Comment;
+    using TeamTaskboard.Web.Infrastructure.Sanitize;
 
     [Authorize]
     public class CommentsController : BaseController
     {
-        public CommentsController(ITaskboardData data)
+        private ISanitizer htmlSanitizer;
+
+        public CommentsController(ITaskboardData data, ISanitizer sanitizer)
             : base(data)
         {
+            this.htmlSanitizer = sanitizer;
         }
 
         [HttpGet]
@@ -36,11 +40,14 @@
         [ValidateAntiForgeryToken]
         public ActionResult Create(CommentInputModel model)
         {
-            model.PostedBy = this.CurrentUser.UserName;
-            model.PostedOn = DateTime.Now;
+            Comment comment = new Comment 
+            {
+                Content = this.htmlSanitizer.Sanitize(model.Content),
+                PostedBy = this.CurrentUser.UserName,
+                PostedOn = DateTime.Now,
+                TeamTaskId = model.TaskId
+            };
 
-            Comment comment = Mapper.Map<Comment>(model);
-            comment.TeamTaskId = model.TaskId;
             this.Data.Comments.Add(comment);
             this.Data.SaveChanges();
 

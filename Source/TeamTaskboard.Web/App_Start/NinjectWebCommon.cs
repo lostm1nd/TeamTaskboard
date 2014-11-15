@@ -14,6 +14,7 @@ namespace TeamTaskboard.Web.App_Start
 
     using TeamTaskboard.Data;
     using TeamTaskboard.Data.Contracts;
+    using TeamTaskboard.Web.Infrastructure.Sanitize;
 
     public static class NinjectWebCommon 
     {
@@ -67,6 +68,7 @@ namespace TeamTaskboard.Web.App_Start
         {
             kernel.Bind<DbContext>().To<TaskboardDbContext>();
             kernel.Bind<ITaskboardData>().To<TaskboardData>();
+            kernel.Bind<ISanitizer>().To<TaskboardSanitizer>();
         }        
     }
 }
