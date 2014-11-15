@@ -5,7 +5,6 @@
 
     using TeamTaskboard.Models;
     using TeamTaskboard.Web.Infrastructure.Mappings;
-    using TeamTaskboard.Web.ViewModels.Status;
 
     public class CreateTaskViewModel : IMapFrom<TeamTask>
     {
@@ -26,9 +25,9 @@
         public DateTime DueDate { get; set; }
 
         [Required]
-        [EnumDataType(typeof(StatusViewModel))]
+        [EnumDataType(typeof(Status))]
         [Display(Name = "Task Status")]
-        public StatusViewModel Status { get; set; }
+        public Status Status { get; set; }
 
         [Display(Name = "Related Project")]
         public int ProjectId { get; set; }

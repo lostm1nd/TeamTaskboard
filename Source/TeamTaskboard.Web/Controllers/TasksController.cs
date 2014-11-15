@@ -5,6 +5,7 @@
     using System.Web.Mvc;
 
     using AutoMapper;
+    using AutoMapper.QueryableExtensions;
 
     using TeamTaskboard.Data.Contracts;
     using TeamTaskboard.Models;
@@ -21,7 +22,19 @@
         [HttpGet]
         public ActionResult Index()
         {
-            return View();
+            var teamId = this.CurrentUser.TeamId;
+            if (teamId == null)
+            {
+                return RedirectToAction("Index", "Team");
+            }
+
+            ViewBag.TeamName = this.CurrentUser.Team.Name;
+            var tasks = this.Data.Tasks.GetAll()
+                .Where(t => t.Reporter.TeamId == teamId)
+                .Project()
+                .To<ExtendedTaskViewModel>();
+
+            return View(tasks);
         }
 
         [HttpGet]
@@ -90,6 +103,21 @@
             this.Data.SaveChanges();
 
             return RedirectToAction("Details", new { id = id });
+        }
+
+        [HttpGet]
+        public ActionResult Delete(int? id)
+        {
+            var task = this.Data.Tasks.GetById(id);
+            if (task == null)
+            {
+                return View("NotFound");
+            }
+
+            this.Data.Tasks.Delete(task);
+            this.Data.SaveChanges();
+
+            return RedirectToAction("Index");
         }
     }
 }

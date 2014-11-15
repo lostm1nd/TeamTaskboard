@@ -239,7 +239,6 @@
     <Compile Include="ViewModels\Manage\VerifyPhoneNumberViewModel.cs" />
     <Compile Include="ViewModels\Project\CreateProjectViewModel.cs" />
     <Compile Include="ViewModels\Task\CreateTaskViewModel.cs" />
-    <Compile Include="ViewModels\Status\StatusViewModel.cs" />
     <Compile Include="ViewModels\Task\ExtendedTaskViewModel.cs" />
     <Compile Include="ViewModels\Team\ExtendedTeamViewModel.cs" />
     <Compile Include="ViewModels\Team\TeamMemberViewModel.cs" />
@@ -716,6 +715,7 @@
     <Content Include="Scripts\kendoui\kendo.all.min.js.map" />
     <Content Include="Scripts\kendoui\kendo.aspnetmvc.min.js.map" />
     <Content Include="Views\Projects\Index.cshtml" />
+    <Content Include="Views\Tasks\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

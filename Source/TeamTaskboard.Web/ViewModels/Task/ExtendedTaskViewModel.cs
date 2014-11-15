@@ -9,7 +9,6 @@
     using TeamTaskboard.Models;
     using TeamTaskboard.Web.Infrastructure.Mappings;
     using TeamTaskboard.Web.ViewModels.Comment;
-    using TeamTaskboard.Web.ViewModels.Status;
 
     public class ExtendedTaskViewModel : TaskViewModel
     {
@@ -29,7 +28,7 @@
         [DisplayFormat(NullDisplayText = "There is no processor for this task.")]
         public string Processor { get; set; }
 
-        public StatusViewModel Status { get; set; }
+        public Status Status { get; set; }
 
         public ICollection<CommentViewModel> Comments { get; set; }
 
