@@ -1,8 +1,10 @@
 ﻿namespace TeamTaskboard.Web.Controllers
 {
+    using System.Linq;
     using System.Web.Mvc;
 
     using AutoMapper;
+    using AutoMapper.QueryableExtensions;
 
     using TeamTaskboard.Data.Contracts;
     using TeamTaskboard.Models;
@@ -19,13 +21,34 @@
         [HttpGet]
         public ActionResult Index()
         {
-            return View();
+            var teamId = this.CurrentUser.TeamId;
+            if (teamId == null)
+            {
+                return RedirectToAction("Index", "Team");
+            }
+
+            ViewBag.TeamName = this.CurrentUser.Team.Name;
+
+            var projects = this.Data.Projects.GetAll()
+                .Where(p => p.TeamId == teamId)
+                .Project()
+                .To<ProjectViewModel>();
+
+            return View(projects);
         }
 
         [HttpGet]
         public ActionResult Details(int? id)
         {
-            return View(new CreateProjectViewModel());
+            var project = this.Data.Projects.GetById(id);
+            if (project == null)
+            {
+                return View("NotFound");
+            }
+
+            var projectModel = Mapper.Map<ProjectViewModel>(project);
+
+            return View(projectModel);
         }
 
         [HttpGet]

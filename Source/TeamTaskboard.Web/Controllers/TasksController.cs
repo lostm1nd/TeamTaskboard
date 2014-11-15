@@ -33,7 +33,7 @@
                 return View("NotFound");
             }
 
-            var taskModel = Mapper.Map<ExtendedTaskViewModel>(this.Data.Tasks.GetById(id));
+            var taskModel = Mapper.Map<ExtendedTaskViewModel>(task);
 
             return View(taskModel);
         }
