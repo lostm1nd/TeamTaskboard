@@ -51,11 +51,9 @@
             this.Data.Comments.Add(comment);
             this.Data.SaveChanges();
 
-            var commentsViewModel = this.Data.Comments.GetAll()
-                .Where(c => c.TeamTaskId == model.TaskId)
-                .Project().To<CommentViewModel>();
+            var commentViewModel = Mapper.Map<CommentViewModel>(comment);
 
-            return PartialView("_ShowCommentsPartial", commentsViewModel);
+            return PartialView("_CommentPartial", commentViewModel);
         }
     }
 }

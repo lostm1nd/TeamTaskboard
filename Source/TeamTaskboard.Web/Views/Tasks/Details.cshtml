@@ -80,7 +80,10 @@
 </div>
 
 <div class="row" id="show-taks-comment">
-    @Html.Partial("_ShowCommentsPartial", Model.Comments)
+    @foreach (var comment in Model.Comments)
+    {
+        @Html.Partial("_CommentPartial", comment);
+    }
 </div>
 
 <div class="row" id="create-taks-comment"></div>

@@ -1,0 +1,7 @@
+﻿@using TeamTaskboard.Web.ViewModels.Comment
+@model CommentViewModel
+
+<article class="panel panel-info">
+    <div class="panel-body">@Html.Raw(Model.Content)</div>
+    <footer class="panel-footer">@Model.PostedOn by @Model.PostedBy</footer>
+</article>

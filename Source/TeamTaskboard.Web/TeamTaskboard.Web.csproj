@@ -488,7 +488,7 @@
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce.eot" />
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\readme.md" />
     <Content Include="Scripts\tinymce\langs\readme.md" />
-    <Content Include="Views\Shared\_ShowCommentsPartial.cshtml" />
+    <Content Include="Views\Shared\_CommentPartial.cshtml" />
     <Content Include="Views\Comments\_CreateCommentPartial.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\TinyMCE.cshtml" />
   </ItemGroup>
