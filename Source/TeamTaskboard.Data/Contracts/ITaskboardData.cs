@@ -12,6 +12,8 @@
 
         IRepository<TeamTask> Tasks { get; }
 
+        IRepository<Comment> Comments { get; }
+
         int SaveChanges();
     }
 }

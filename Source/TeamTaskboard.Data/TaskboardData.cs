@@ -43,6 +43,11 @@
             get { return this.GetRepository<TeamTask>(); }
         }
 
+        public IRepository<Comment> Comments
+        {
+            get { return this.GetRepository<Comment>(); }
+        }
+
         public int SaveChanges()
         {
             return this.dbContext.SaveChanges();

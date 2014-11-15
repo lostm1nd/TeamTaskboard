@@ -1,0 +1,10 @@
+﻿@using TeamTaskboard.Web.ViewModels.Comment
+@model System.Collections.Generic.IEnumerable<CommentViewModel>
+
+@foreach (var comment in Model)
+{
+    <article class="panel panel-info">
+        <p class="panel-body">@comment.Content</p>
+        <footer class="panel-footer">@comment.PostedOn by @comment.PostedBy</footer>
+    </article>
+}

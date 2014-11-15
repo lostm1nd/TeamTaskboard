@@ -72,18 +72,18 @@
        @Ajax.ActionLink("Add comment", "Create", "Comments", new { taskId = Model.TaskId },
                 new AjaxOptions
                 {
-                    UpdateTargetId = "taks-comment",
+                    UpdateTargetId = "create-taks-comment",
                     HttpMethod = "GET",
                     InsertionMode = InsertionMode.Replace
                 }, new { @class = "btn btn-default" })
    </p>
 </div>
 
-<div class="row">
-    @TaskHelpers.ShowComments(Model)
+<div class="row" id="show-taks-comment">
+    @Html.Partial("_ShowCommentsPartial", Model.Comments)
 </div>
 
-<div class="row" id="taks-comment"></div>
+<div class="row" id="create-taks-comment"></div>
 
 <p>
     @Html.ActionLink("Back to team info", "Index", "Team")
@@ -91,4 +91,9 @@
 
 @section scripts {
     @Scripts.Render("~/bundles/jqueryajax")
+    <script type="text/javascript">
+        function onCommentCreated() {
+            $('#create-taks-comment').empty();
+        }
+    </script>
 }

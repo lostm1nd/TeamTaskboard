@@ -16,5 +16,10 @@
 
         [Required]
         public DateTime PostedOn { get; set; }
+
+        [Required]
+        public int TeamTaskId { get; set; }
+
+        public virtual TeamTask TeamTask { get; set; }
     }
 }

@@ -21,6 +21,8 @@
 
         public IDbSet<TeamTask> Tasks { get; set; }
 
+        public IDbSet<Comment> Comments { get; set; }
+
         public static TaskboardDbContext Create()
         {
             return new TaskboardDbContext();
