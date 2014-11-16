@@ -12,10 +12,12 @@
 </head>
 <body>
     <nav class="container">
-        <ul class="nav navbar-nav" id="kendo-menu">
+        <ul class="kendo-menu">
+            <li>@Html.ActionLink("Home", "Index", "Home")</li>
             <li>@Html.ActionLink("Manage Teams", "Manage", "Teams")</li>
             <li>@Html.ActionLink("Manage Projects", "Manage", "Projects")</li>
             <li>@Html.ActionLink("Manage Tasks", "Manage", "Tasks")</li>
+            @Html.Partial("_LogoutPartial")
         </ul>
     </nav>
 
@@ -23,15 +25,11 @@
         @RenderBody()
     </div>
 
-    <footer class="text-center sticky-footer">
-        <p class="no-margin">&copy; @DateTime.Now.Year - Team Taskboard Administration</p>
-    </footer>
-
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/kendoui")
     @RenderSection("scripts", required: false)
     <script type="text/javascript">
-        $('#kendo-menu').kendoMenu();
+        $('.kendo-menu').kendoMenu();
     </script>
 </body>
 </html>

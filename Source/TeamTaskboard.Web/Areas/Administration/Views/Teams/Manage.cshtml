@@ -8,6 +8,18 @@
 @(Html.Kendo()
     .Grid<TeamViewModel>()
     .Name("team-grid")
+    .Pageable()
+    .Sortable()
+    .ToolBar(tb => tb.Create()) 
+    .Editable(edit => edit.Mode(GridEditMode.PopUp))
     .DataSource(data => data.Ajax()
-        .Read(r => r.Action("Manage", "Teams")))
+            .Model(m => 
+                {
+                    m.Id(team => team.TeamId);
+                    m.Field(team => team.TeamId).Editable(false);
+                    m.Field(team => team.MembersCount).Editable(false);
+                    m.Field(team => team.ProjectsCount).Editable(false);
+                })
+            .Read(r => r.Action("Read", "Teams"))
+            .Create(cr => cr.Action("Create", "Teams")))
     )
