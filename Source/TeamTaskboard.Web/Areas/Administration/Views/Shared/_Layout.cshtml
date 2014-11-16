@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Team Taskboard Administration</title>
+    @Styles.Render("~/Content/bootstrapcss")
+    @Styles.Render("~/Content/kendoui")
+    @RenderSection("styles", required: false)
+    @Styles.Render("~/Content/mycss")
+    @Scripts.Render("~/bundles/jquery")
+</head>
+<body>
+    <nav class="container">
+        <ul class="nav navbar-nav" id="kendo-menu">
+            <li>@Html.ActionLink("Manage Teams", "Manage", "Teams")</li>
+            <li>@Html.ActionLink("Manage Projects", "Manage", "Projects")</li>
+            <li>@Html.ActionLink("Manage Tasks", "Manage", "Tasks")</li>
+        </ul>
+    </nav>
+
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+
+    <footer class="text-center sticky-footer">
+        <p class="no-margin">&copy; @DateTime.Now.Year - Team Taskboard Administration</p>
+    </footer>
+
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/kendoui")
+    @RenderSection("scripts", required: false)
+    <script type="text/javascript">
+        $('#kendo-menu').kendoMenu();
+    </script>
+</body>
+</html>

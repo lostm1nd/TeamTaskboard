@@ -13,7 +13,7 @@ namespace TeamTaskboard.Web
 
             RegisterScipts(bundles);
 
-            BundleTable.EnableOptimizations = true;
+            BundleTable.EnableOptimizations = false;
         }
 
         private static void RegisterStyles(BundleCollection bundles)
@@ -28,6 +28,7 @@ namespace TeamTaskboard.Web
                       "~/Content/site.css"));
 
             bundles.Add(new StyleBundle("~/Content/kendoui").Include(
+                      "~/Content/kendoui/kendo.common.min.css",
                       "~/Content/kendoui/kendo.common-bootstrap.min.css",
                       "~/Content/kendoui/kendo.flat.min.css"));
         }

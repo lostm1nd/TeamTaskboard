@@ -1,0 +1,13 @@
+﻿@using TeamTaskboard.Web.Areas.Administration.ViewModels
+@{
+    ViewBag.Title = "Manage Teams";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@(Html.Kendo()
+    .Grid<TeamViewModel>()
+    .Name("team-grid")
+    .DataSource(data => data.Ajax()
+        .Read(r => r.Action("Manage", "Teams")))
+    )
