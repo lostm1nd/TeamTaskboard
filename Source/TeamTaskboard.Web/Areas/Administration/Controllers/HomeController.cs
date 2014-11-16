@@ -3,7 +3,6 @@
     using System.Web.Mvc;
     using TeamTaskboard.Data.Contracts;
 
-    [Authorize]
     public class HomeController : AdminBaseController
     {
         public HomeController(ITaskboardData data)

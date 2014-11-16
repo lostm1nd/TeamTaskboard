@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using TeamTaskboard.Models;
 using TeamTaskboard.Web.ViewModels.Account;
+using System.IO;
 
 namespace TeamTaskboard.Web.Controllers
 {
@@ -153,6 +154,20 @@ namespace TeamTaskboard.Web.Controllers
             if (ModelState.IsValid)
             {
                 var user = new TaskboardUser { UserName = model.Username, Email = model.Email };
+                if (model.ProfileAvatar != null)
+                {
+                    using (MemoryStream target = new MemoryStream())
+                    {
+                        model.ProfileAvatar.InputStream.CopyTo(target);
+                        byte[] data = target.ToArray();
+                        user.Avatar = new Avatar
+                        {
+                            Data = data,
+                            ContentType = model.ProfileAvatar.ContentType
+                        };
+                    }
+                }
+
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

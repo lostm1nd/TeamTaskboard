@@ -210,6 +210,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ImagesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProjectsController.cs" />
     <Compile Include="Controllers\TasksController.cs" />
@@ -260,6 +261,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.paper.css" />
     <Content Include="Content\bootstrap.paper.min.css" />
+    <Content Include="Content\images\default-avatar.jpg" />
     <Content Include="Content\kendoui\Black\editor.png" />
     <Content Include="Content\kendoui\Black\imagebrowser.png" />
     <Content Include="Content\kendoui\Black\indeterminate.gif" />

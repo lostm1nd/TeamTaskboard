@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Avatar.cs" />
     <Compile Include="Comment.cs" />
     <Compile Include="Project.cs" />
     <Compile Include="Status.cs" />

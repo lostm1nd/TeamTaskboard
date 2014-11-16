@@ -21,6 +21,10 @@
 
         public virtual Team Team { get; set; }
 
+        public int? AvatarId { get; set; }
+
+        public virtual Avatar Avatar { get; set; }
+
         [InverseProperty("Reporter")]
         public virtual ICollection<TeamTask> ReportertedTasks { get; set; }
 
