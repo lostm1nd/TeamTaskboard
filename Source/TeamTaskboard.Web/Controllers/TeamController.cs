@@ -1,6 +1,8 @@
 ﻿namespace TeamTaskboard.Web.Controllers
 {
     using System.Linq;
+    using System.Collections.Generic;
+    using System.Data.Entity;
     using System.Web.Mvc;
 
     using AutoMapper;
@@ -10,13 +12,18 @@
     using TeamTaskboard.Models;
     using TeamTaskboard.Web.InputModels.Team;
     using TeamTaskboard.Web.ViewModels.Team;
+    using TeamTaskboard.Web.ViewModels.Task;
+    using TeamTaskboard.Web.Helpers;
 
     [Authorize]
     public class TeamController : BaseController
     {
+        private TaskHelper taskHelper;
+
         public TeamController(ITaskboardData data)
             : base(data)
         {
+            this.taskHelper = new TaskHelper(data);
         }
 
         [HttpGet]
@@ -30,6 +37,7 @@
             else
             {
                 var teamModel = Mapper.Map<ExtendedTeamViewModel>(team);
+                ViewBag.Tasks = this.taskHelper.GetMappedTasksForTeam<TaskViewModel>(team.TeamId);
                 return View("TeamInfo", teamModel);
             }
         }
@@ -60,6 +68,30 @@
         public ActionResult CreateTeam()
         {
             return PartialView("_CreateTeamPartial");
+        }
+
+        [HttpGet]
+        public ActionResult LeaveTeam()
+        {
+            if (this.CurrentUser == null || this.CurrentUser.TeamId == null)
+            {
+                return RedirectToAction("Index");
+            }
+
+            var tasks = this.taskHelper.GetTasksForTeam(this.CurrentUser.TeamId.Value);
+            foreach (var task in tasks)
+            {
+                if (task.Processor != null && task.Processor.Id == this.CurrentUser.Id)
+                {
+                    task.Processor = null;
+                }
+            }
+
+            this.CurrentUser.TeamId = null;
+            this.CurrentUser.Team = null;
+            this.Data.SaveChanges();
+
+            return RedirectToAction("Index");
         }
 
         [HttpPost]

@@ -8,7 +8,7 @@
     using TeamTaskboard.Web.Infrastructure.Mappings;
     using TeamTaskboard.Web.ViewModels.Project;
 
-    public class ExtendedTeamViewModel : TeamViewModel, ICustomMappings
+    public class ExtendedTeamViewModel : TeamViewModel
     {
         public ExtendedTeamViewModel()
         {
@@ -16,17 +16,8 @@
             this.Projects = new List<ProjectViewModel>();
         }
 
-        public virtual ICollection<TeamMemberViewModel> Members { get; set; }
+        public ICollection<TeamMemberViewModel> Members { get; set; }
 
-        public virtual ICollection<ProjectViewModel> Projects { get; set; }
-
-        public void CreateMappings(IConfiguration configuration)
-        {
-            //configuration.CreateMap<Team, ExtendedTeamViewModel>()
-            //    .ForMember(dest => dest.Members, opt => opt.MapFrom(src => src.Members));
-
-            //configuration.CreateMap<Team, ExtendedTeamViewModel>()
-            //    .ForMember(dest => dest.Members, opt => opt.MapFrom(src => src.Members));
-        }
+        public ICollection<ProjectViewModel> Projects { get; set; }
     }
 }

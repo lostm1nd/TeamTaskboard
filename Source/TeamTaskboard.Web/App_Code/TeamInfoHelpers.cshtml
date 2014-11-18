@@ -1,4 +1,5 @@
-﻿@using TeamTaskboard.Web.ViewModels.Project
+﻿@using TeamTaskboard.Web.ViewModels.Task
+@using TeamTaskboard.Web.ViewModels.Project
 
 @helper ProjectsPanel(IEnumerable<ProjectViewModel> projects)
 {
@@ -19,26 +20,22 @@
     </div>
 }
 
-@helper TasksPanel(IEnumerable<ProjectViewModel> projects)
+@helper TasksPanel(IEnumerable<TaskViewModel> tasks)
 {
-    <div class="panel-body">
-        @{
-            int total = 0;
-            foreach (var project in projects)
-            {
-                foreach (var task in project.Tasks)
-                {
-                    total += 1;
-                    <p>
-                        <a href="/Tasks/Details/@task.TaskId">@task.Name</a>
-                    </p>
-                }
-            }
 
-            if (total == 0)
-            {
-                <p>Currently there are no tasks.</p>
-            }
+    <div class="panel-body">
+        @if (tasks.Count() == 0)
+        {
+            <p>Currently there are no tasks.</p>
         }
+        else
+        {
+            foreach (var task in tasks)
+            {
+                <p>
+                    <a href="/Tasks/Details/@task.TaskId">@task.Name</a>
+                </p>
+            }
+        }        
     </div>
 }

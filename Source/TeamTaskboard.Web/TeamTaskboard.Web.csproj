@@ -115,6 +115,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -226,6 +227,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\KendoHelpers.cs" />
+    <Compile Include="Helpers\TaskHelper.cs" />
     <Compile Include="InputModels\Comment\CommentInputModel.cs" />
     <Compile Include="InputModels\Team\TeamInputModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -750,6 +752,10 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TeamTaskboard.Common\TeamTaskboard.Common.csproj">
+      <Project>{afa68355-c231-44e8-b3e7-9c84e8a3514b}</Project>
+      <Name>TeamTaskboard.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TeamTaskboard.Data\TeamTaskboard.Data.csproj">
       <Project>{5776d3c5-b11b-4ada-aa82-0033f42079c0}</Project>
       <Name>TeamTaskboard.Data</Name>

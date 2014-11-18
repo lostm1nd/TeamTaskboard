@@ -1,4 +1,5 @@
-﻿@model TeamTaskboard.Web.ViewModels.Team.ExtendedTeamViewModel
+﻿@using TeamTaskboard.Web.ViewModels.Task
+@model TeamTaskboard.Web.ViewModels.Team.ExtendedTeamViewModel
 
 @{
     ViewBag.Title = "Team Info";
@@ -51,7 +52,7 @@
     <article class="col-md-6">
         <div class="panel panel-default">
             <h2 class="panel-heading text-center">Projects</h2>
-            @TeamInfoHelpers.ProjectsPanel(Model.Projects)
+            @TeamInfoHelpers.ProjectsPanel(Model.Projects.ToList())
             <footer class="panel-footer">
                 @Html.ActionLink("Create new project", "Create", "Projects", null, new { @class = "btn btn-default" })
             </footer>
@@ -60,7 +61,7 @@
     <article class="col-md-6">
         <div class="panel panel-default">
             <h2 class="panel-heading text-center">Tasks</h2>
-            @TeamInfoHelpers.TasksPanel(Model.Projects)
+            @TeamInfoHelpers.TasksPanel(ViewBag.Tasks as List<TaskViewModel>)
             <footer class="panel-footer">
                 @Html.ActionLink("Create new task", "Create", "Tasks", null, new { @class = "btn btn-default" })
             </footer>

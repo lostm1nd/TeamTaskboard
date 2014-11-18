@@ -1,6 +1,7 @@
 ﻿namespace TeamTaskboard.Web.Controllers
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Web.Mvc;
 
@@ -11,13 +12,17 @@
     using TeamTaskboard.Models;
     using TeamTaskboard.Web.InputModels.Task;
     using TeamTaskboard.Web.ViewModels.Task;
+using TeamTaskboard.Web.Helpers;
 
     [Authorize]
     public class TasksController : BaseController
     {
+        private TaskHelper taskHelper;
+
         public TasksController(ITaskboardData data)
             : base(data)
         {
+            this.taskHelper = new TaskHelper(data);
         }
 
         [HttpGet]
@@ -30,10 +35,7 @@
             }
 
             ViewBag.TeamName = this.CurrentUser.Team.Name;
-            var tasks = this.Data.Tasks.GetAll()
-                .Where(t => t.Reporter.TeamId == teamId)
-                .Project()
-                .To<ExtendedTaskViewModel>();
+            var tasks = this.taskHelper.GetMappedTasksForTeam<ExtendedTaskViewModel>(teamId.Value);
 
             return View(tasks);
         }
