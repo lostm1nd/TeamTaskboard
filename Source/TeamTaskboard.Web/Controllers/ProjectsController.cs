@@ -1,5 +1,6 @@
 ﻿namespace TeamTaskboard.Web.Controllers
 {
+    using System.Data.Entity;
     using System.Linq;
     using System.Web.Mvc;
 
@@ -9,6 +10,7 @@
     using TeamTaskboard.Data.Contracts;
     using TeamTaskboard.Models;
     using TeamTaskboard.Web.ViewModels.Project;
+    using TeamTaskboard.Web.InputModels.Project;
 
     [Authorize]
     public class ProjectsController : BaseController
@@ -54,12 +56,12 @@
         [HttpGet]
         public ActionResult Create()
         {
-            return View(new CreateProjectViewModel());
+            return View(new ProjectInputModel());
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(CreateProjectViewModel model)
+        public ActionResult Create(ProjectInputModel model)
         {
             int? teamId = this.CurrentUser.TeamId;
             if (teamId == null)
@@ -79,6 +81,56 @@
             this.Data.SaveChanges();
 
             return RedirectToAction("Index", "Team");
+        }
+
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            var project = this.Data.Projects.GetAll().Where(p => p.ProjectId == id).Include(p => p.Tasks).FirstOrDefault();
+            if (project == null)
+            {
+                return View("NotFound");
+            }
+
+            foreach (var task in project.Tasks.ToList())
+            {
+                this.Data.Tasks.Delete(task);
+            }
+
+            this.Data.Projects.Delete(project);
+            this.Data.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            var project = this.Data.Projects.GetById(id);
+            if (project == null)
+            {
+                return View("NotFound");
+            }
+
+            var model = Mapper.Map<ProjectInputModel>(project);
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(ProjectInputModel model)
+        {
+            if (model == null || !ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            var entity = this.Data.Projects.GetById(model.ProjectId);
+            entity.Name = model.Name;
+            entity.Description = model.Description;
+            this.Data.SaveChanges();
+
+            return RedirectToAction("Index");
         }
     }
 }

@@ -12,7 +12,7 @@
     using TeamTaskboard.Models;
     using TeamTaskboard.Web.InputModels.Task;
     using TeamTaskboard.Web.ViewModels.Task;
-using TeamTaskboard.Web.Helpers;
+    using TeamTaskboard.Web.Helpers;
 
     [Authorize]
     public class TasksController : BaseController
@@ -109,7 +109,7 @@ using TeamTaskboard.Web.Helpers;
         }
 
         [HttpGet]
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int id)
         {
             var task = this.Data.Tasks.GetById(id);
             if (task == null)
