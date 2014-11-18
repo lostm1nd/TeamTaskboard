@@ -202,10 +202,14 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
-    <Compile Include="Areas\Administration\Controllers\AdminBaseController.cs" />
+    <Compile Include="Areas\Administration\Controllers\Base\AdminBaseController.cs" />
     <Compile Include="Areas\Administration\Controllers\HomeController.cs" />
-    <Compile Include="Areas\Administration\Controllers\KendoGridController.cs" />
+    <Compile Include="Areas\Administration\Controllers\Base\KendoGridController.cs" />
+    <Compile Include="Areas\Administration\Controllers\ProjectsController.cs" />
+    <Compile Include="Areas\Administration\Controllers\TasksController.cs" />
     <Compile Include="Areas\Administration\Controllers\TeamsController.cs" />
+    <Compile Include="Areas\Administration\ViewModels\ProjectViewModel.cs" />
+    <Compile Include="Areas\Administration\ViewModels\TaskViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\TeamViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
@@ -221,6 +225,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\KendoHelpers.cs" />
     <Compile Include="InputModels\Comment\CommentInputModel.cs" />
     <Compile Include="InputModels\Team\TeamInputModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -498,6 +503,8 @@
     <Content Include="Areas\Administration\Views\Home\Index.cshtml" />
     <Content Include="Areas\Administration\Views\Teams\Index.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\_LogoutPartial.cshtml" />
+    <Content Include="Areas\Administration\Views\Projects\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\Tasks\Index.cshtml" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Scripts\bootstrap-datepicker.js" />
     <Content Include="Scripts\bootstrap.js" />

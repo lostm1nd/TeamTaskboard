@@ -1,9 +1,9 @@
-﻿namespace TeamTaskboard.Web.Areas.Administration.Controllers
+﻿namespace TeamTaskboard.Web.Areas.Administration.Controllers.Base
 {
     using System.Web.Mvc;
     using TeamTaskboard.Data.Contracts;
 
-    //[Authorize(Roles = "Aministrator")]
+    //[Authorize(Roles = "Administrator")]
     public abstract class AdminBaseController : Controller
     {
         public AdminBaseController(ITaskboardData data)

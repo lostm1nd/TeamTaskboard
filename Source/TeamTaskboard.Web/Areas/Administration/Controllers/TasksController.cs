@@ -11,14 +11,13 @@
     using TeamTaskboard.Web.Areas.Administration.ViewModels;
     using TeamTaskboard.Web.Areas.Administration.Controllers.Base;
 
-    public class TeamsController : KendoGridController
+    public class TasksController : KendoGridController
     {
-        public TeamsController(ITaskboardData data)
+        public TasksController(ITaskboardData data)
             : base(data)
         {
         }
 
-        [HttpGet]
         public ActionResult Index()
         {
             return View();
@@ -26,12 +25,12 @@
 
         protected override IEnumerable GetData()
         {
-            return this.Data.Teams.GetAll().Project().To<TeamViewModel>();
+            return this.Data.Tasks.GetAll().Project().To<TaskViewModel>();
         }
 
         protected override T GetById<T>(object id)
         {
-            return this.Data.Projects.GetById(id) as T;
+            return this.Data.Tasks.GetById(id) as T;
         }
     }
 }

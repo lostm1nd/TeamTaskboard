@@ -11,17 +11,17 @@
     @Scripts.Render("~/bundles/jquery")
 </head>
 <body>
-    <nav class="container">
+    <nav>
         <ul class="kendo-menu">
             <li>@Html.ActionLink("Home", "Index", "Home")</li>
-            <li>@Html.ActionLink("Manage Teams", "Manage", "Teams")</li>
-            <li>@Html.ActionLink("Manage Projects", "Manage", "Projects")</li>
-            <li>@Html.ActionLink("Manage Tasks", "Manage", "Tasks")</li>
+            <li>@Html.ActionLink("Manage Teams", "Index", "Teams")</li>
+            <li>@Html.ActionLink("Manage Projects", "Index", "Projects")</li>
+            <li>@Html.ActionLink("Manage Tasks", "Index", "Tasks")</li>
             @Html.Partial("_LogoutPartial")
         </ul>
     </nav>
 
-    <div class="container body-content">
+    <div class="body-content">
         @RenderBody()
     </div>
 

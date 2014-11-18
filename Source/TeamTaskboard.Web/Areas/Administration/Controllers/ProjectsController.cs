@@ -11,9 +11,9 @@
     using TeamTaskboard.Web.Areas.Administration.ViewModels;
     using TeamTaskboard.Web.Areas.Administration.Controllers.Base;
 
-    public class TeamsController : KendoGridController
+    public class ProjectsController : KendoGridController
     {
-        public TeamsController(ITaskboardData data)
+        public ProjectsController(ITaskboardData data)
             : base(data)
         {
         }
@@ -26,7 +26,7 @@
 
         protected override IEnumerable GetData()
         {
-            return this.Data.Teams.GetAll().Project().To<TeamViewModel>();
+            return this.Data.Projects.GetAll().Project().To<ProjectViewModel>();
         }
 
         protected override T GetById<T>(object id)

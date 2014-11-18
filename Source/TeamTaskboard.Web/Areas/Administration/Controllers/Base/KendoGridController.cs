@@ -1,4 +1,4 @@
-﻿namespace TeamTaskboard.Web.Areas.Administration.Controllers
+﻿namespace TeamTaskboard.Web.Areas.Administration.Controllers.Base
 {
     using System.Collections;
     using System.Data.Entity;
