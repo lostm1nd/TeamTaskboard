@@ -87,7 +87,7 @@ namespace TeamTaskboard.Data.Migrations
                 var team = new Team
                 {
                     Name = "Team " + i,
-                    Description = "Description for team " + 1
+                    Description = "Description for team " + i
                 };
 
                 while (team.Members.Count < 4)

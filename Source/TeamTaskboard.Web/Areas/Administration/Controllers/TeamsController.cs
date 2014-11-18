@@ -64,6 +64,14 @@
                 this.Data.SaveChanges();
             }
 
+            var teamMembers = team.Members.ToList();
+            foreach (var member in teamMembers)
+            {
+                member.TeamId = null;
+            }
+
+            this.Data.SaveChanges();
+
             this.Data.Teams.Delete(model.TeamId);
             this.Data.SaveChanges();
 

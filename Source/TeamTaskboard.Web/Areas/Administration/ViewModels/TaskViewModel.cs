@@ -19,11 +19,11 @@
         [Display(Name = "Name")]
         public string Name { get; set; }
 
-        [Display(Name = "Id")]
+        [Display(Name = "Description")]
         [DataType(DataType.MultilineText)]
         public string Description { get; set; }
 
-        [Display(Name = "Id")]
+        [Display(Name = "Due Date")]
         [DisplayFormat(DataFormatString = "{0:MM/dd/yy at H:mm:ss}")]
         [HiddenInput(DisplayValue = false)]
         public DateTime DueDate { get; set; }
@@ -40,8 +40,10 @@
         [HiddenInput(DisplayValue = false)]
         public string ProcessorName { get; set; }
 
+        [HiddenInput(DisplayValue = false)]
         public string Status { get; set; }
 
+        [HiddenInput(DisplayValue = false)]
         public int CommentsCount { get; set; }
 
         public void CreateMappings(IConfiguration configuration)
