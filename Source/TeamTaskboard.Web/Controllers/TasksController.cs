@@ -109,6 +109,36 @@
         }
 
         [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            var task = this.Data.Tasks.GetById(id);
+            if (task == null)
+            {
+                return View("NotFound");
+            }
+
+            var model = Mapper.Map<CreateTaskInputModel>(task);
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(CreateTaskInputModel model)
+        {
+            if (model == null || !ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            var entity = this.Data.Tasks.GetById(model.TeamTaskId);
+            entity.Name = model.Name;
+            entity.Description = model.Description;
+            this.Data.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
         public ActionResult Delete(int id)
         {
             var task = this.Data.Tasks.GetById(id);
