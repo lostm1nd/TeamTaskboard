@@ -53,6 +53,11 @@
             get { return this.GetRepository<Comment>(); }
         }
 
+        public IRepository<Avatar> Avatars
+        {
+            get { return this.GetRepository<Avatar>(); }
+        }
+
         public int SaveChanges()
         {
             return this.dbContext.SaveChanges();

@@ -23,6 +23,8 @@
 
         public IDbSet<Comment> Comments { get; set; }
 
+        public IDbSet<Avatar> Avatars { get; set; }
+
         public static TaskboardDbContext Create()
         {
             return new TaskboardDbContext();

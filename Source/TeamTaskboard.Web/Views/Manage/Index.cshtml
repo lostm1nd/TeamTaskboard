@@ -3,6 +3,14 @@
     ViewBag.Title = "Manage";
 }
 
+@section styles {
+    <style>
+        img:hover {
+            cursor: pointer;
+        }
+    </style>
+}
+
 <h2>@ViewBag.Title.</h2>
 
 <p class="text-success">@ViewBag.StatusMessage</p>
@@ -78,6 +86,27 @@
         </dd>
     </dl>
     <div class="col-md-4 text-center">
-        <img src="@Url.Action("GetUserAvatar", "Images", new { id = Model.Id })" alt="Profile image" class="img-thumbnail">
+        @using (Html.BeginForm("UpdateProfileImage", "Images", FormMethod.Post, new { id = "profile-image-form", enctype = "multipart/form-data" }))
+        {
+            <input class="hidden" type="file" name="profileImage" id="profile-image-upload" />
+        }
+        <p id="profile-image-container">
+            <img src="@Url.Action("GetUserAvatar", "Images", new { id = Model.Id })" alt="Profile image" class="img-thumbnail" width="140" height="140">
+        </p>
+        <p class="lead">
+            Click on avatar to choose a new one.
+        </p>
     </div>
 </div>
+
+@section scripts {
+    <script>
+        $('#profile-image-upload').on('change', function (ev) {
+            $('#profile-image-form').submit();
+        });
+
+        $('#profile-image-container').on('click', 'img', function (ev) {
+            $('#profile-image-upload').trigger('click');
+        });
+    </script>
+}

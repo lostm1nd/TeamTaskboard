@@ -17,6 +17,8 @@
 
         IRepository<Comment> Comments { get; }
 
+        IRepository<Avatar> Avatars { get; }
+
         int SaveChanges();
     }
 }
