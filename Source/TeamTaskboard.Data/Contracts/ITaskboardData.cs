@@ -1,9 +1,12 @@
 ﻿namespace TeamTaskboard.Data.Contracts
 {
+    using System.Data.Entity;
     using TeamTaskboard.Models;
 
     public interface ITaskboardData
     {
+        DbContext Context { get; }
+
         IRepository<TaskboardUser> Users { get; }
 
         IRepository<Team> Teams { get; }

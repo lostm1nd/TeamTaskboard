@@ -18,7 +18,7 @@
         }
 
         [HttpGet]
-        public ActionResult Manage()
+        public ActionResult Index()
         {
             return View();
         }

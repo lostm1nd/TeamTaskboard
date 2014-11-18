@@ -204,6 +204,7 @@
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
     <Compile Include="Areas\Administration\Controllers\AdminBaseController.cs" />
     <Compile Include="Areas\Administration\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Administration\Controllers\KendoGridController.cs" />
     <Compile Include="Areas\Administration\Controllers\TeamsController.cs" />
     <Compile Include="Areas\Administration\ViewModels\TeamViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -495,7 +496,7 @@
     <Content Include="Areas\Administration\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Administration\Views\Home\Index.cshtml" />
-    <Content Include="Areas\Administration\Views\Teams\Manage.cshtml" />
+    <Content Include="Areas\Administration\Views\Teams\Index.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\_LogoutPartial.cshtml" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Scripts\bootstrap-datepicker.js" />
@@ -736,7 +737,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Administration\Views\AdminBase\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
