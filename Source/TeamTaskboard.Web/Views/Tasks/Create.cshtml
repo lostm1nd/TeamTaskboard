@@ -1,4 +1,4 @@
-﻿@model TeamTaskboard.Web.ViewModels.Task.CreateTaskViewModel
+﻿@model TeamTaskboard.Web.InputModels.Task.CreateTaskInputModel
 
 @{
     ViewBag.Title = "Create Task";
@@ -71,6 +71,7 @@
 </p>
 
 @section scripts {
+    @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/datepickerjs")
     <script type="text/javascript">
         $(function () {

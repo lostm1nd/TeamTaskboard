@@ -9,6 +9,7 @@
 
     using TeamTaskboard.Data.Contracts;
     using TeamTaskboard.Models;
+    using TeamTaskboard.Web.InputModels.Task;
     using TeamTaskboard.Web.ViewModels.Task;
 
     [Authorize]
@@ -57,12 +58,12 @@
             var projects = this.CurrentUser.Team.Projects.Select(p => new { Id = p.ProjectId, Name = p.Name});
             ViewBag.ProjectList = new SelectList(projects, "Id", "Name");
 
-            return View(new CreateTaskViewModel { DueDate = DateTime.Now });
+            return View(new CreateTaskInputModel { DueDate = DateTime.Now });
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(CreateTaskViewModel model)
+        public ActionResult Create(CreateTaskInputModel model)
         {
             if (!ModelState.IsValid)
             {

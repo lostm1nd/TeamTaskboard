@@ -245,7 +245,7 @@
     <Compile Include="ViewModels\Manage\SetPasswordViewModel.cs" />
     <Compile Include="ViewModels\Manage\VerifyPhoneNumberViewModel.cs" />
     <Compile Include="ViewModels\Project\CreateProjectViewModel.cs" />
-    <Compile Include="ViewModels\Task\CreateTaskViewModel.cs" />
+    <Compile Include="InputModels\Task\CreateTaskInputModel.cs" />
     <Compile Include="ViewModels\Task\ExtendedTaskViewModel.cs" />
     <Compile Include="ViewModels\Team\ExtendedTeamViewModel.cs" />
     <Compile Include="ViewModels\Team\TeamMemberViewModel.cs" />
