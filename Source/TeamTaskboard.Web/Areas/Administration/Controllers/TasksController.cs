@@ -6,8 +6,10 @@
 
     using AutoMapper;
     using AutoMapper.QueryableExtensions;
+    using Kendo.Mvc.UI;
 
     using TeamTaskboard.Data.Contracts;
+    using TeamTaskboard.Models;
     using TeamTaskboard.Web.Areas.Administration.ViewModels;
     using TeamTaskboard.Web.Areas.Administration.Controllers.Base;
 
@@ -21,6 +23,22 @@
         public ActionResult Index()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Update([DataSourceRequest]DataSourceRequest request, TaskViewModel model)
+        {
+            base.Update<TeamTask, TaskViewModel>(model, model.TeamTaskId);
+
+            return this.GridOperation(request, model);
+        }
+
+        [HttpPost]
+        public ActionResult Destroy([DataSourceRequest]DataSourceRequest request, TaskViewModel model)
+        {
+            base.Destroy<TeamTask>(model.TeamTaskId);
+
+            return this.GridOperation(request, model);
         }
 
         protected override IEnumerable GetData()

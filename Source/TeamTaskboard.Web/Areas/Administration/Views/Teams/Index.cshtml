@@ -7,4 +7,24 @@
 <h2>@ViewBag.Title</h2>
 <hr />
 
-@(Html.CustomKendoGrid<TeamViewModel>("teams-grid", "Teams", m => m.TeamId))
+@(Html.Kendo()
+        .Grid<TeamViewModel>()
+        .Name("team-grid")
+        .Columns(columns => { columns.AutoGenerate(true); columns.Command(c => { c.Edit(); c.Destroy(); }).Title("Actions"); })
+        .Pageable(page => page.Refresh(true))
+        .Sortable()
+        .Groupable()
+        .Filterable()
+        .Editable(edit => edit.Mode(GridEditMode.PopUp))
+        .ToolBar(toolbar => toolbar.Create())
+        .DataSource(data =>
+            data
+                .Ajax()
+                .PageSize(10)
+                .Model(m => m.Id("TeamId"))
+                .Read(read => read.Action("Read", "Teams"))
+                .Create(create => create.Action("Create", "Teams"))
+                .Update(update => update.Action("Update", "Teams"))
+                .Destroy(destroy => destroy.Action("Destroy", "Teams"))
+                )
+)

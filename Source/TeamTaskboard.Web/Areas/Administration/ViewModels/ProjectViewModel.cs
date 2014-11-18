@@ -28,13 +28,14 @@
 
         [Display(Name = "Tasks Count")]
         [HiddenInput(DisplayValue = false)]
-        public string TasksCount { get; set; }
+        public int TasksCount { get; set; }
 
         public void CreateMappings(IConfiguration configuration)
         {
             configuration.CreateMap<Project, ProjectViewModel>()
                 .ForMember(dest => dest.TeamName, opt => opt.MapFrom(src => src.Team.Name))
-                .ForMember(dest => dest.TasksCount, opt => opt.MapFrom(src => src.Tasks.Count()));
+                .ForMember(dest => dest.TasksCount, opt => opt.MapFrom(src => src.Tasks.Count()))
+                .ReverseMap();
         }
     }
 }

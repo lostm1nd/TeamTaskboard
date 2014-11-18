@@ -43,35 +43,35 @@
                 new TaskJsonModel
                 {
                     Label = "Not started",
-                    Value = 10, //tasks.Where(t => t.Status == Status.NotStarted).Count(),
+                    Value = tasks.Where(t => t.Status == Status.NotStarted).Count(),
                     Color = "#F7464A",
                     Highlight = "#FF5A5E"
                 },
                 new TaskJsonModel
                 {
                     Label = "In progress",
-                    Value = 12, //tasks.Where(t => t.Status == Status.InProgress).Count(),
+                    Value = tasks.Where(t => t.Status == Status.InProgress).Count(),
                     Color = "#46BFBD",
                     Highlight = "#5AD3D1"
                 },
                 new TaskJsonModel
                 {
                     Label = "In Review",
-                    Value = 16, //tasks.Where(t => t.Status == Status.InReview).Count(),
+                    Value = tasks.Where(t => t.Status == Status.InReview).Count(),
                     Color = "#FDB45C",
                     Highlight = "#FFC870"
                 },
                 new TaskJsonModel
                 {
                     Label = "Blocked",
-                    Value = 13, //tasks.Where(t => t.Status == Status.Blocked).Count(),
+                    Value = tasks.Where(t => t.Status == Status.Blocked).Count(),
                     Color = "#B48EAD",
                     Highlight = "#C69CBE"
                 },
                 new TaskJsonModel
                 {
                     Label = "Blocked",
-                    Value = 14, //tasks.Where(t => t.Status == Status.Done).Count()
+                    Value = tasks.Where(t => t.Status == Status.Done).Count(),
                     Color = "#949FB1",
                     Highlight = "#A8B3C5"
                 }

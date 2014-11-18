@@ -11,7 +11,7 @@
     {
         public static GridBuilder<T> CustomKendoGrid<T>
             (this HtmlHelper helper, string gridName, string controllerName, Expression<Func<T, object>> modelIdExpression,
-                bool withCreate = true, Action<GridColumnFactory<T>> columns = null) where T : class
+                bool withCreate = true, int pageSize = 10, Action<GridColumnFactory<T>> columns = null) where T : class
         {
             if (columns == null)
             {
@@ -26,7 +26,6 @@
                 .Grid<T>()
                 .Name(gridName)
                 .Columns(columns)
-                .ColumnMenu()
                 .Pageable(page => page.Refresh(true))
                 .Sortable()
                 .Groupable()
@@ -41,6 +40,7 @@
             grid.DataSource(data =>
                 data
                     .Ajax()
+                    .PageSize(pageSize)
                     .Model(m => m.Id(modelIdExpression))
                     .Read(read => read.Action("Read", controllerName))
                     .Create(create => create.Action("Create", controllerName))

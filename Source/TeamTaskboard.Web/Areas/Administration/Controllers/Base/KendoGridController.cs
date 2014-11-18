@@ -37,9 +37,10 @@
                 return null;
             }
 
-            var dbModel = Mapper.Map<T>(model);
-            this.ChangeEntityStateAndSave(dbModel, EntityState.Added);
-            return dbModel;
+            var entity = Mapper.Map<T>(model);
+            this.ChangeEntityStateAndSave(entity, EntityState.Added);
+
+            return entity;
         }
 
         [NonAction]

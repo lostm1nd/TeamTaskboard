@@ -33,7 +33,8 @@
         {
             configuration.CreateMap<Team, TeamViewModel>()
                 .ForMember(dest => dest.MembersCount, opt => opt.MapFrom(src => src.Members.Count()))
-                .ForMember(dest => dest.ProjectsCount, opt => opt.MapFrom(src => src.Projects.Count()));
+                .ForMember(dest => dest.ProjectsCount, opt => opt.MapFrom(src => src.Projects.Count()))
+                .ReverseMap();
         }
     }
 }

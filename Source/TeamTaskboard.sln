@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamTaskboard.Web", "TeamTa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamTaskboard.Web.Infrastructure", "TeamTaskboard.Web.Infrastructure\TeamTaskboard.Web.Infrastructure.csproj", "{EA1237CF-8C00-42BA-AA34-1F2432F3CFDF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamTaskboard.Common", "TeamTaskboard.Common\TeamTaskboard.Common.csproj", "{AFA68355-C231-44E8-B3E7-9C84E8A3514B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{EA1237CF-8C00-42BA-AA34-1F2432F3CFDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA1237CF-8C00-42BA-AA34-1F2432F3CFDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EA1237CF-8C00-42BA-AA34-1F2432F3CFDF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFA68355-C231-44E8-B3E7-9C84E8A3514B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFA68355-C231-44E8-B3E7-9C84E8A3514B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFA68355-C231-44E8-B3E7-9C84E8A3514B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFA68355-C231-44E8-B3E7-9C84E8A3514B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -51,7 +51,8 @@
                 .ForMember(dest => dest.ReporterName, opt => opt.MapFrom(src => src.Reporter.UserName))
                 .ForMember(dest => dest.ProcessorName, opt => opt.MapFrom(src => src.Processor.UserName))
                 .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Status.ToString()))
-                .ForMember(dest => dest.CommentsCount, opt => opt.MapFrom(src => src.Comments.Count()));
+                .ForMember(dest => dest.CommentsCount, opt => opt.MapFrom(src => src.Comments.Count()))
+                .ReverseMap();
         }
     }
 }
